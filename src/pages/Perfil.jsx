@@ -48,13 +48,27 @@ function Perfil({ setPagina }) {
     carregarPerfil();
   }, []);
 
-  const handleSair = async () => {
-    const { error } = await supabase.auth.signOut();
-    if (error) {
-      alert("Erro ao sair: " + error.message);
-      return;
+const handleSair = async () => {
+    try {
+      const { error } = await supabase.auth.signOut();
+      if (error) {
+        alert("Erro ao sair: " + error.message);
+        return;
+      }
+
+      // Limpeza de dados locais e cache para segurança
+      localStorage.clear();
+      sessionStorage.clear();
+
+      if ('caches' in window) {
+        const cacheNames = await caches.keys();
+        await Promise.all(cacheNames.map(name => caches.delete(name)));
+      }
+
+      setPagina("login");
+    } catch (err) {
+      console.error("Erro inesperado ao sair:", err);
     }
-    setPagina("login");
   };
 
   return (
