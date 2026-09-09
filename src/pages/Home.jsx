@@ -55,7 +55,7 @@ function Home({ setPagina }) {
 
           <h1>
             Sejam todos bem-vindos à
-            <span>Mah Estética</span>
+            <span>Bella Gestão</span>
           </h1>
 
           <p>
@@ -96,7 +96,7 @@ function Home({ setPagina }) {
       <section className="about" id="about">
 
         <h2 className="heading">
-          Sobre a <span>Mah Estética</span>
+          Sobre a <span>Bella Gestão</span>
         </h2>
 
         <div className="about-row">
@@ -135,7 +135,7 @@ function Home({ setPagina }) {
             </h3>
 
             <p>
-              A Mah Estética nasceu com o propósito de oferecer
+              A Bella Gestão nasceu com o propósito de oferecer
               momentos de cuidado, relaxamento e autoestima, em um
               espaço pensado para você se sentir bem em cada detalhe.
             </p>
