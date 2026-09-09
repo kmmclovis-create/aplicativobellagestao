@@ -47,8 +47,8 @@ const handleGoogleLogin = async (e) => {
     const { error } = await supabase.auth.signInWithOAuth({
       provider: "google",
       options: {
-        // Altere para apontar apenas para a raiz do projeto atual
-        redirectTo: window.location.origin + "/",
+        // Remove a barra final para corresponder exatamente à whitelist do Supabase
+        redirectTo: window.location.origin,
       },
     });
 
