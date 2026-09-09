@@ -1,0 +1,1 @@
+if('serviceWorker' in navigator) navigator.serviceWorker.register('/tccMobile/dev-sw.js?dev-sw', { scope: '/tccMobile/', type: 'classic' })

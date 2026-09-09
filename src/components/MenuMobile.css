@@ -1,0 +1,84 @@
+/* =========================================================
+   MENU MOBILE
+========================================================= */
+
+.menu-mobile {
+  position: absolute;
+
+  top: 100%;
+  left: 0;
+
+  width: 100%;
+
+  background: #ffffff;
+
+  display: flex;
+  flex-direction: column;
+
+  padding: 0.2rem 0;
+
+  box-shadow:
+    0 5px 15px rgba(0, 0, 0, 0.1);
+
+  z-index: 1000;
+}
+
+
+/* =========================================================
+   OPÇÕES
+========================================================= */
+
+.menu-mobile a {
+  display: flex;
+
+  align-items: center;
+
+  gap: 0.5rem;
+
+  padding: 0.55rem 1.2rem;
+
+  color: #3d3034;
+
+  text-decoration: none;
+
+  font-size: 1.05rem;
+
+  line-height: 1.2;
+
+  border-bottom:
+    1px solid
+    #e9dddf;
+
+  transition: 0.3s;
+}
+
+
+/* =========================================================
+   ÍCONES
+========================================================= */
+
+.menu-mobile a img {
+  width: 16px !important;
+  height: 16px !important;
+
+  max-width: 16px !important;
+  max-height: 16px !important;
+
+  min-width: 16px !important;
+  min-height: 16px !important;
+
+  object-fit: contain;
+
+  display: block;
+}
+
+
+/* =========================================================
+   HOVER
+========================================================= */
+
+.menu-mobile a:hover {
+  background: #f9edef;
+
+  color: #c98291;
+}

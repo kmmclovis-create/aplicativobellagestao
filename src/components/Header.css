@@ -1,0 +1,486 @@
+/* =========================================================
+   CABEÇALHO PRINCIPAL
+========================================================= */
+
+.topo {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+
+  width: 100%;
+  height: 90px;
+
+  padding: 0 9%;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  background: rgba(255, 255, 255, 0.97);
+
+  box-shadow:
+    0 3px 15px rgba(70, 40, 50, 0.07);
+
+  box-sizing: border-box;
+}
+
+
+/* =========================================================
+   LOGO
+========================================================= */
+
+.topo .logo {
+  display: flex;
+  align-items: center;
+
+  flex-shrink: 0;
+
+  text-decoration: none;
+
+  font-family:
+    Georgia,
+    "Times New Roman",
+    serif;
+}
+
+
+.logo-texto {
+  color: #3d3034;
+
+  font-size: 1.7rem;
+
+  font-weight: 400;
+
+  letter-spacing: 0.05rem;
+}
+
+
+.logo-ponto {
+  color: #c98291;
+
+  font-size: 1.7rem;
+
+  line-height: 1;
+
+  margin-right: 0.2rem;
+
+  transform: translateY(-0.1rem);
+}
+
+
+/* =========================================================
+   MENU PRINCIPAL
+========================================================= */
+
+.topo .menu {
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  gap: 28px;
+
+  margin: 0;
+  padding: 0;
+
+  list-style: none;
+}
+
+
+/* =========================================================
+   LINKS DO MENU
+========================================================= */
+
+.topo .menu a {
+  position: relative;
+
+  display: flex;
+  align-items: center;
+
+  gap: 6px;
+
+  padding: 8px 0;
+
+  color: #3d3034;
+
+  text-decoration: none;
+
+  font-family: Arial, sans-serif;
+
+  font-size: 14px;
+
+  white-space: nowrap;
+
+  transition: 0.3s;
+}
+
+
+/* =========================================================
+   ÍCONES DO MENU PRINCIPAL
+========================================================= */
+
+.topo .menu a img {
+  width: 18px;
+  height: 18px;
+
+  object-fit: contain;
+
+  display: block;
+
+  flex-shrink: 0;
+}
+
+
+/* =========================================================
+   HOVER DO MENU
+========================================================= */
+
+.topo .menu a:hover {
+  color: #c98291;
+}
+
+
+/* Linha abaixo do menu */
+
+.topo .menu a::after {
+  content: "";
+
+  position: absolute;
+
+  left: 0;
+  bottom: -7px;
+
+  width: 0;
+  height: 2px;
+
+  background: #c98291;
+
+  transition: 0.3s;
+}
+
+
+.topo .menu a:hover::after {
+  width: 100%;
+}
+
+
+/* =========================================================
+   ÁREA DOS ÍCONES DO LADO DIREITO
+========================================================= */
+
+.topo .header-icons {
+  display: flex;
+
+  align-items: center;
+
+  gap: 12px;
+
+  flex-shrink: 0;
+}
+
+
+/* =========================================================
+   LINKS DO CARRINHO E PERFIL
+========================================================= */
+
+.topo .header-icons a {
+  width: 36px;
+  height: 36px;
+
+  padding: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 50%;
+
+  background: #fcf8f5;
+
+  text-decoration: none;
+
+  cursor: pointer;
+
+  transition: 0.3s;
+
+  box-sizing: border-box;
+}
+
+
+/* =========================================================
+   ÍCONES DO CARRINHO E PERFIL
+========================================================= */
+
+.topo .header-icons a img {
+  width: 20px;
+  height: 20px;
+
+  max-width: 20px;
+  max-height: 20px;
+
+  object-fit: contain;
+
+  display: block;
+
+  flex-shrink: 0;
+}
+
+
+/* =========================================================
+   HOVER CARRINHO / PERFIL
+========================================================= */
+
+.topo .header-icons a:hover {
+  background: #c98291;
+
+  transform: translateY(-2px);
+}
+
+
+/* =========================================================
+   BOTÃO MENU MOBILE
+========================================================= */
+
+.topo .botao-menu {
+  display: none;
+
+  width: 36px;
+  height: 36px;
+
+  padding: 0;
+
+  border: none;
+
+  background: transparent;
+
+  color: #3d3034;
+
+  font-size: 24px;
+
+  cursor: pointer;
+
+  align-items: center;
+  justify-content: center;
+}
+
+
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media (max-width: 1100px) {
+
+  .topo {
+    padding: 0 5%;
+  }
+
+
+  .topo .menu {
+    gap: 18px;
+  }
+
+
+  .topo .menu a {
+    font-size: 13px;
+  }
+
+
+  .topo .menu a img {
+    width: 16px;
+    height: 16px;
+  }
+
+
+  .topo .header-icons {
+    gap: 8px;
+  }
+
+
+  .topo .header-icons a {
+    width: 34px;
+    height: 34px;
+  }
+
+
+  .topo .header-icons a img {
+    width: 19px;
+    height: 19px;
+
+    max-width: 19px;
+    max-height: 19px;
+  }
+
+}
+
+
+/* =========================================================
+   TABLET MENOR / MENU MOBILE
+========================================================= */
+
+@media (max-width: 850px) {
+
+  .topo {
+    height: 80px;
+
+    padding: 0 5%;
+  }
+
+
+  /* Esconde menu principal */
+
+  .topo .menu {
+    display: none;
+  }
+
+
+  /* Ícones do lado direito */
+
+  .topo .header-icons {
+    margin-left: auto;
+
+    margin-right: 18px;
+
+    gap: 8px;
+  }
+
+
+  .topo .header-icons a {
+    width: 36px;
+    height: 36px;
+  }
+
+
+  .topo .header-icons a img {
+    width: 20px;
+    height: 20px;
+
+    max-width: 20px;
+    max-height: 20px;
+  }
+
+
+  /* Botão menu */
+
+  .topo .botao-menu {
+    display: flex;
+
+    width: 36px;
+    height: 36px;
+
+    font-size: 24px;
+  }
+
+}
+
+
+/* =========================================================
+   CELULAR
+========================================================= */
+
+@media (max-width: 600px) {
+
+  /* Logo */
+
+  .logo-ponto {
+    font-size: 1.9rem;
+  }
+
+
+  .logo-texto {
+    font-size: 1.9rem;
+  }
+
+
+  /* Carrinho e perfil */
+
+  .topo .header-icons {
+    gap: 6px;
+
+    margin-right: 8px;
+  }
+
+
+  .topo .header-icons a {
+    width: 34px;
+    height: 34px;
+  }
+
+
+  .topo .header-icons a img {
+    width: 19px;
+    height: 19px;
+
+    max-width: 19px;
+    max-height: 19px;
+  }
+
+
+  /* Menu */
+
+  .topo .botao-menu {
+    width: 36px;
+    height: 36px;
+
+    font-size: 24px;
+  }
+
+}
+
+
+/* =========================================================
+   CELULARES PEQUENOS
+========================================================= */
+
+@media (max-width: 400px) {
+
+  .topo {
+    padding: 0 15px;
+  }
+
+
+  .logo-ponto {
+    font-size: 1.7rem;
+  }
+
+
+  .logo-texto {
+    font-size: 1.7rem;
+  }
+
+
+  /* Carrinho e perfil */
+
+  .topo .header-icons {
+    gap: 5px;
+
+    margin-right: 5px;
+  }
+
+
+  .topo .header-icons a {
+    width: 32px;
+    height: 32px;
+  }
+
+
+  .topo .header-icons a img {
+    width: 18px;
+    height: 18px;
+
+    max-width: 18px;
+    max-height: 18px;
+  }
+
+
+  /* Menu */
+
+  .topo .botao-menu {
+    width: 34px;
+    height: 34px;
+
+    font-size: 22px;
+  }
+
+}

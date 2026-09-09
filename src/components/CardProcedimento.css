@@ -1,0 +1,87 @@
+.card-procedimento {
+  width: 100%;
+  max-width: 300px;
+
+  background-color: #ffffff;
+
+  border-radius: 16px;
+  overflow: hidden;
+
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.12);
+
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+
+/* Efeito quando passa o mouse no card */
+.card-procedimento:hover {
+  transform: translateY(-5px);
+
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.18);
+}
+
+
+/* Imagem do card */
+.card-procedimento > img {
+  width: 100%;
+  height: 190px;
+
+  object-fit: cover;
+
+  display: block;
+}
+
+
+/* Área de informações */
+.card-conteudo {
+  padding: 18px;
+}
+
+
+/* Nome do procedimento */
+.card-conteudo h3 {
+  color: #66042a;
+
+  font-size: 20px;
+
+  margin: 0 0 10px 0;
+}
+
+
+/* Descrição */
+.card-conteudo p {
+  font-size: 14px;
+
+  line-height: 1.5;
+
+  color: #555;
+
+  margin: 0 0 18px 0;
+}
+
+
+/* Botão */
+.card-conteudo button {
+  width: 100%;
+
+  border: none;
+  border-radius: 8px;
+
+  padding: 11px;
+
+  background-color: #66042a;
+  color: white;
+
+  font-size: 15px;
+  font-weight: bold;
+
+  cursor: pointer;
+
+  transition: background-color 0.2s ease;
+}
+
+
+/* Efeito do botão */
+.card-conteudo button:hover {
+  background-color: #4d031f;
+}

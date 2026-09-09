@@ -1,0 +1,730 @@
+/* =========================================================
+   VARIÁVEIS
+========================================================= */
+
+:root {
+  --pink: #c98291;
+  --dark-pink: #a95f70;
+  --rose: #e7b8c0;
+
+  --light-pink: #f9edef;
+
+  --cream: #fcf8f5;
+  --nude: #f5eee9;
+
+  --gold: #b18a52;
+
+  --dark: #3d3034;
+  --gray: #7c7074;
+
+  --white: #ffffff;
+
+  --border: #e9dddf;
+}
+
+
+/* =========================================================
+   RESET
+========================================================= */
+
+.procedimentos-page,
+.procedimentos-page * {
+  box-sizing: border-box;
+}
+
+
+.procedimentos-page {
+  width: 100%;
+
+  background: #fff;
+
+  color: var(--dark);
+
+  font-family:
+    Arial,
+    Helvetica,
+    sans-serif;
+
+  overflow-x: hidden;
+}
+
+
+button,
+input,
+select {
+  font: inherit;
+}
+
+
+/* =========================================================
+   HERO
+========================================================= */
+
+.procedimentos-hero {
+  padding:
+    15rem
+    9%
+    5rem;
+
+  background:
+    linear-gradient(
+      135deg,
+      var(--cream),
+      #fff 70%
+    );
+
+  border-bottom:
+    1px solid
+    var(--border);
+
+  text-align: center;
+}
+
+
+/* =========================================================
+   INTRO
+========================================================= */
+
+.procedimentos-intro .section-label {
+  display: inline-block;
+
+  margin-bottom: 1.5rem;
+
+  color: var(--gold);
+
+  font-size: 1.3rem;
+
+  font-weight: 700;
+
+  letter-spacing: .25rem;
+}
+
+
+.procedimentos-intro h1 {
+  margin-bottom: 1.5rem;
+
+  color: var(--dark);
+
+  font-family:
+    Georgia,
+    "Times New Roman",
+    serif;
+
+  font-size: 4.8rem;
+
+  font-weight: 400;
+
+  line-height: 1.2;
+}
+
+
+.procedimentos-intro h1 span {
+  color: var(--pink);
+
+  font-style: italic;
+}
+
+
+.procedimentos-intro p {
+  max-width: 62rem;
+
+  margin: 0 auto;
+
+  color: var(--gray);
+
+  font-size: 1.6rem;
+
+  line-height: 1.8;
+}
+
+
+/* =========================================================
+   PESQUISA
+========================================================= */
+
+.search-container {
+  position: relative;
+
+  width: min(60rem, 100%);
+
+  margin:
+    3rem
+    auto
+    0;
+}
+
+
+.search-icon {
+  position: absolute;
+
+  left: 2rem;
+  top: 50%;
+
+  transform:
+    translateY(-50%);
+
+  color: var(--pink);
+
+  font-size: 1.6rem;
+
+  z-index: 2;
+
+  pointer-events: none;
+}
+
+
+.input {
+  width: 100%;
+
+  height: 5.5rem;
+
+  padding:
+    0
+    5rem;
+
+  border:
+    1px solid
+    var(--border);
+
+  border-radius: 3rem;
+
+  outline: none;
+
+  background: #fff;
+
+  color: var(--dark);
+
+  font-size: 1.5rem;
+
+  box-shadow:
+    0 .8rem 2.5rem
+    rgba(80, 40, 50, .08);
+
+  transition: .3s;
+}
+
+
+.input::placeholder {
+  color: #aaa;
+}
+
+
+.input:hover {
+  border-color: var(--rose);
+}
+
+
+.input:focus {
+  border-color: var(--pink);
+
+  box-shadow:
+    0 .8rem 2.5rem
+    rgba(201, 130, 145, .15);
+}
+
+
+.clear-btn {
+  position: absolute;
+
+  right: 1.7rem;
+  top: 50%;
+
+  transform:
+    translateY(-50%);
+
+  width: 3.2rem;
+  height: 3.2rem;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  border: none;
+
+  border-radius: 50%;
+
+  background: var(--light-pink);
+
+  color: var(--pink);
+
+  font-size: 2rem;
+
+  cursor: pointer;
+
+  transition: .3s;
+}
+
+
+.clear-btn:hover {
+  background: var(--pink);
+
+  color: #fff;
+}
+
+
+/* =========================================================
+   CATEGORIA
+========================================================= */
+
+.categoria {
+  padding:
+    6rem
+    9%
+    0;
+}
+
+
+.categoria + .categoria {
+  margin-top: 1rem;
+}
+
+
+/* =========================================================
+   TÍTULO
+========================================================= */
+
+.titulo-categoria {
+  display: flex;
+
+  align-items: center;
+
+  gap: 1.5rem;
+
+  margin:
+    0
+    0
+    3rem;
+
+  color: var(--dark);
+
+  font-family:
+    Georgia,
+    "Times New Roman",
+    serif;
+
+  font-size: 3rem;
+
+  font-weight: 400;
+}
+
+
+.titulo-categoria::after {
+  content: "";
+
+  flex: 1;
+
+  height: 1px;
+
+  background: var(--border);
+}
+
+
+/* =========================================================
+   GRID
+========================================================= */
+
+.container-procedimentos {
+  display: grid;
+
+  grid-template-columns:
+    repeat(
+      3,
+      minmax(0, 1fr)
+    );
+
+  gap: 2.5rem;
+
+  align-items: stretch;
+}
+
+
+/* =========================================================
+   CARD
+========================================================= */
+
+.procedimento {
+  width: 100%;
+
+  display: flex;
+
+  flex-direction: column;
+
+  overflow: hidden;
+
+  background: #fff;
+
+  border:
+    1px solid
+    var(--border);
+
+  box-shadow:
+    0 .5rem 2rem
+    rgba(80, 40, 50, .04);
+
+  transition: .4s;
+}
+
+
+.procedimento:hover {
+  transform:
+    translateY(-.7rem);
+
+  box-shadow:
+    0 1.5rem 4rem
+    rgba(80, 40, 50, .12);
+}
+
+
+/* =========================================================
+   IMAGEM
+========================================================= */
+
+.imagem-procedimento {
+  width: 100%;
+
+  height: 21rem;
+
+  overflow: hidden;
+}
+
+
+.imagem-procedimento img {
+  width: 100%;
+  height: 100%;
+
+  object-fit: cover;
+
+  transition: .5s;
+}
+
+
+.procedimento:hover
+.imagem-procedimento img {
+  transform:
+    scale(1.04);
+}
+
+
+/* =========================================================
+   CONTEÚDO
+========================================================= */
+
+.conteudo-procedimento {
+  flex: 1;
+
+  display: flex;
+
+  flex-direction: column;
+}
+
+
+.procedimento h3 {
+  margin: 0;
+
+  padding:
+    2.5rem
+    2.5rem
+    1rem;
+
+  color: var(--dark);
+
+  font-family:
+    Georgia,
+    "Times New Roman",
+    serif;
+
+  font-size: 2rem;
+
+  font-weight: 400;
+}
+
+
+.procedimento p {
+  flex-grow: 1;
+
+  margin: 0;
+
+  padding:
+    0
+    2.5rem;
+
+  color: var(--gray);
+
+  font-size: 1.35rem;
+
+  line-height: 1.7;
+
+  text-align: left;
+}
+
+
+/* =========================================================
+   OPÇÕES
+========================================================= */
+
+.opcoes-valor {
+  display: flex;
+
+  flex-direction: column;
+
+  gap: .8rem;
+
+  margin:
+    2rem
+    2.5rem
+    0;
+}
+
+
+.opcoes-valor label {
+  color: var(--dark);
+
+  font-size: 1.3rem;
+
+  font-weight: 600;
+}
+
+
+.variant-select {
+  width: 100%;
+
+  min-height: 4.2rem;
+
+  padding:
+    .8rem
+    1.2rem;
+
+  border:
+    1px solid
+    var(--border);
+
+  border-radius: .5rem;
+
+  outline: none;
+
+  background: var(--cream);
+
+  color: var(--dark);
+
+  font-size: 1.3rem;
+
+  cursor: pointer;
+
+  transition: .3s;
+}
+
+
+.variant-select:hover,
+.variant-select:focus {
+  border-color: var(--pink);
+}
+
+
+/* =========================================================
+   PREÇO
+========================================================= */
+
+.preco-atual {
+  margin:
+    1.2rem
+    2.5rem
+    0;
+
+  color: var(--pink);
+
+  font-size: 1.5rem;
+
+  font-weight: 700;
+}
+
+
+/* =========================================================
+   BOTÃO
+========================================================= */
+
+.btn-agendar {
+  width:
+    calc(100% - 5rem);
+
+  margin:
+    2rem
+    2.5rem
+    2.5rem;
+
+  padding:
+    1.3rem
+    2rem;
+
+  background: var(--pink);
+
+  color: #fff;
+
+  border:
+    1px solid
+    var(--pink);
+
+  border-radius: .4rem;
+
+  font-size: 1.4rem;
+
+  font-weight: 600;
+
+  cursor: pointer;
+
+  transition: .3s;
+}
+
+
+.btn-agendar:hover {
+  background: var(--dark-pink);
+
+  border-color: var(--dark-pink);
+
+  transform:
+    translateY(-2px);
+
+  box-shadow:
+    0 .8rem 2rem
+    rgba(169, 95, 112, .2);
+}
+
+
+/* =========================================================
+   SEM RESULTADOS
+========================================================= */
+
+.nenhum-produto {
+  width: 100%;
+
+  padding:
+    7rem
+    2rem;
+
+  text-align: center;
+}
+
+
+.icone-sem-resultado {
+  margin-bottom: 1.5rem;
+
+  color: var(--rose);
+
+  font-size: 3rem;
+}
+
+
+.nenhum-produto h3 {
+  margin: 0;
+
+  color: var(--dark);
+
+  font-size: 2rem;
+
+  font-weight: 500;
+}
+
+
+.nenhum-produto p {
+  margin-top: 1rem;
+
+  color: var(--gray);
+
+  font-size: 1.4rem;
+}
+
+
+/* =========================================================
+   RESPONSIVIDADE
+========================================================= */
+
+@media (max-width: 1100px) {
+
+  .container-procedimentos {
+    grid-template-columns:
+      repeat(2, 1fr);
+  }
+
+  .procedimentos-hero,
+  .categoria {
+    padding-left: 5%;
+    padding-right: 5%;
+  }
+
+}
+
+
+@media (max-width: 750px) {
+
+  .procedimentos-hero {
+    padding:
+      12rem
+      2rem
+      4rem;
+  }
+
+
+  .procedimentos-intro h1 {
+    font-size: 3.8rem;
+  }
+
+
+  .procedimentos-intro p {
+    font-size: 1.4rem;
+  }
+
+
+  .categoria {
+    padding:
+      4rem
+      2rem
+      0;
+  }
+
+
+  .titulo-categoria {
+    font-size: 2.5rem;
+  }
+
+
+  .container-procedimentos {
+    grid-template-columns: 1fr;
+  }
+
+
+  .imagem-procedimento {
+    height: 22rem;
+  }
+
+}
+
+
+@media (max-width: 500px) {
+
+  .procedimentos-intro h1 {
+    font-size: 3.3rem;
+  }
+
+
+  .procedimentos-intro .section-label {
+    font-size: 1.1rem;
+  }
+
+
+  .input {
+    height: 5rem;
+
+    font-size: 1.4rem;
+  }
+
+
+  .imagem-procedimento {
+    height: 20rem;
+  }
+
+
+  .procedimento h3 {
+    font-size: 1.9rem;
+  }
+
+}

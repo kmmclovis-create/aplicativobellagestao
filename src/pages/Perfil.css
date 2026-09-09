@@ -1,0 +1,725 @@
+/* ========================================
+   RESET
+======================================== */
+
+.pagina-perfil {
+  min-height: 100vh;
+
+  background-color: #faf7f8;
+
+  padding: 95px 15px 35px;
+
+  color: #333;
+}
+
+
+/* ========================================
+   CABEÇALHO DO PERFIL
+======================================== */
+
+.perfil-header {
+  width: 100%;
+
+  background-color: #ffffff;
+
+  border: 1px solid #eee2e7;
+
+  border-radius: 18px;
+
+  padding: 22px 18px;
+
+  display: flex;
+
+  flex-direction: column;
+
+  align-items: center;
+
+  text-align: center;
+
+  gap: 16px;
+
+  box-shadow:
+    0 4px 15px rgba(102, 4, 42, 0.07);
+}
+
+
+/* ========================================
+   FOTO
+======================================== */
+
+.foto-container {
+  width: 105px;
+
+  height: 105px;
+
+  flex-shrink: 0;
+}
+
+
+.foto-perfil {
+  width: 100%;
+  height: 100%;
+
+  object-fit: contain;
+
+  border-radius: 50%;
+
+  border: 4px solid #f4e1e8;
+
+  background-color: #f9edef;
+}
+
+
+/* ========================================
+   INFORMAÇÕES
+======================================== */
+
+.informacoes-perfil h1 {
+
+  margin: 0 0 6px;
+
+  color: #66042a;
+
+  font-family:
+    Georgia,
+    "Times New Roman",
+    serif;
+
+  font-size: 24px;
+
+  font-weight: 500;
+}
+
+
+.email-perfil {
+
+  margin: 0 0 8px;
+
+  color: #777;
+
+  font-size: 13px;
+}
+
+
+.membro-desde {
+
+  margin: 0;
+
+  color: #9a858d;
+
+  font-size: 12px;
+}
+
+
+.membro-desde i {
+
+  margin-right: 5px;
+
+  color: #66042a;
+}
+
+
+/* ========================================
+   EDITAR PERFIL
+======================================== */
+
+.botao-editar-perfil {
+
+  width: 100%;
+
+  padding: 10px 20px;
+
+  border: 1px solid #dcb9c7;
+
+  border-radius: 10px;
+
+  background-color: #ffffff;
+
+  color: #a95f70;
+
+  font-size: 13px;
+
+  font-weight: 600;
+
+  cursor: pointer;
+
+  transition: 0.2s ease;
+}
+
+
+.botao-editar-perfil i {
+
+  margin-right: 6px;
+}
+
+
+.botao-editar-perfil:hover {
+
+  background-color: #c98291;
+
+  border-color: #c98291;
+
+  color: #ffffff;
+}
+
+
+/* ========================================
+   ACESSO RÁPIDO
+======================================== */
+
+.acesso-rapido {
+
+  margin-top: 22px;
+}
+
+
+.cards-rapidos {
+
+  display: grid;
+
+  grid-template-columns: 1fr;
+
+  gap: 12px;
+}
+
+
+/* ========================================
+   CARD RÁPIDO
+======================================== */
+
+.card-rapido {
+
+  width: 100%;
+
+  min-height: 105px;
+
+  padding: 20px;
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 16px;
+
+  border: 1px solid #eee2e7;
+
+  border-radius: 16px;
+
+  background-color: #f9edef;
+
+  color: #333;
+
+  text-align: left;
+
+  cursor: pointer;
+
+  transition: 0.2s ease;
+}
+
+
+.card-rapido:hover {
+
+  background-color: #ffffff;
+
+  border-color: #dcb9c7;
+
+  transform: translateY(-2px);
+
+  box-shadow:
+    0 8px 20px rgba(102, 4, 42, 0.06);
+}
+
+
+/* ========================================
+   ÍCONE DO CARD
+======================================== */
+
+.icone-rapido {
+
+  width: 52px;
+
+  height: 52px;
+
+  flex-shrink: 0;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  border-radius: 50%;
+
+  background-color: #ffffff;
+
+  color: #c98291;
+
+  font-size: 22px;
+}
+
+
+/* ========================================
+   TEXTO DO CARD
+======================================== */
+
+.card-rapido h3 {
+
+  margin: 0 0 6px;
+
+  color: #3d3034;
+
+  font-size: 16px;
+}
+
+
+.card-rapido p {
+
+  max-width: 250px;
+
+  margin: 0;
+
+  color: #7c7074;
+
+  font-size: 12px;
+
+  line-height: 1.5;
+}
+
+
+/* ========================================
+   OPÇÕES DO PERFIL
+======================================== */
+
+.opcoes-perfil {
+
+  margin-top: 22px;
+
+  background-color: #ffffff;
+
+  border: 1px solid #eee2e7;
+
+  border-radius: 18px;
+
+  padding: 5px 15px;
+
+  box-shadow:
+    0 5px 15px rgba(102, 4, 42, 0.05);
+}
+
+
+/* ========================================
+   OPÇÃO
+======================================== */
+
+.opcao-perfil {
+
+  width: 100%;
+
+  min-height: 75px;
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 12px;
+
+  padding: 14px 5px;
+
+  border: none;
+
+  border-bottom: 1px solid #eee2e7;
+
+  background-color: transparent;
+
+  text-align: left;
+
+  cursor: pointer;
+
+  transition: 0.2s ease;
+}
+
+
+.opcao-perfil:last-child {
+
+  border-bottom: none;
+}
+
+
+.opcao-perfil:hover {
+
+  background-color: #faf7f8;
+}
+
+
+/* ========================================
+   ÍCONE
+======================================== */
+
+.icone-opcao {
+
+  width: 45px;
+
+  height: 45px;
+
+  flex-shrink: 0;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  border-radius: 50%;
+
+  background-color: #f7e8ed;
+
+  color: #c98291;
+
+  font-size: 17px;
+}
+
+
+/* ========================================
+   TEXTO
+======================================== */
+
+.texto-opcao {
+
+  flex: 1;
+
+  min-width: 0;
+}
+
+
+.texto-opcao h3 {
+
+  margin: 0 0 5px;
+
+  color: #3d3034;
+
+  font-size: 14px;
+
+  font-weight: 600;
+}
+
+
+.texto-opcao p {
+
+  margin: 0;
+
+  color: #7c7074;
+
+  font-size: 11px;
+
+  line-height: 1.4;
+}
+
+
+/* ========================================
+   SETA
+======================================== */
+
+.seta {
+
+  color: #c98291;
+
+  font-size: 12px;
+
+  margin-left: 5px;
+}
+
+
+/* ========================================
+   CONTA
+======================================== */
+
+.conta {
+
+  margin-top: 25px;
+
+  padding-bottom: 15px;
+}
+
+
+.conta h2 {
+
+  margin: 0 0 12px;
+
+  padding-left: 5px;
+
+  color: #66042a;
+
+  font-family:
+    Georgia,
+    "Times New Roman",
+    serif;
+
+  font-size: 20px;
+
+  font-weight: 500;
+}
+
+
+.opcoes-conta {
+
+  background-color: #ffffff;
+
+  border: 1px solid #eee2e7;
+
+  border-radius: 16px;
+
+  padding: 5px 15px;
+
+  box-shadow:
+    0 5px 15px rgba(102, 4, 42, 0.05);
+}
+
+
+/* ========================================
+   ITEM DA CONTA
+======================================== */
+
+.item-conta {
+
+  width: 100%;
+
+  min-height: 50px;
+
+  padding: 0 5px;
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 12px;
+
+  border: none;
+
+  background-color: transparent;
+
+  text-align: left;
+
+  cursor: pointer;
+}
+
+
+.item-conta > i:first-child {
+
+  width: 25px;
+
+  color: #d76570;
+
+  font-size: 15px;
+
+  text-align: center;
+}
+
+
+.item-conta span {
+
+  flex: 1;
+
+  color: #d76570;
+
+  font-size: 13px;
+}
+
+
+.item-conta > i:last-child {
+
+  color: #e09ba3;
+
+  font-size: 11px;
+}
+
+
+/* ========================================
+   RESPONSIVIDADE
+======================================== */
+
+@media (min-width: 769px) {
+
+  .pagina-perfil {
+
+    max-width: 900px;
+
+    margin: 0 auto;
+
+    padding: 30px 20px 50px;
+  }
+
+
+  /* CABEÇALHO */
+
+  .perfil-header {
+
+    display: grid;
+
+    grid-template-columns:
+      auto 1fr auto;
+
+    align-items: center;
+
+    text-align: left;
+
+    gap: 22px;
+
+    padding: 28px;
+  }
+
+
+  .botao-editar-perfil {
+
+    width: auto;
+
+    margin-top: 0;
+  }
+
+
+  /* ACESSO RÁPIDO */
+
+  .cards-rapidos {
+
+    grid-template-columns:
+      repeat(2, 1fr);
+  }
+
+
+  .card-rapido {
+
+    min-height: 140px;
+
+    padding: 25px;
+  }
+
+
+  .icone-rapido {
+
+    width: 60px;
+
+    height: 60px;
+
+    font-size: 25px;
+  }
+
+
+  .card-rapido h3 {
+
+    font-size: 17px;
+  }
+
+
+  .card-rapido p {
+
+    font-size: 13px;
+  }
+
+}
+
+
+/* ========================================
+   CELULARES PEQUENOS
+======================================== */
+
+@media (max-width: 450px) {
+
+  .pagina-perfil {
+
+    padding-left: 12px;
+
+    padding-right: 12px;
+  }
+
+
+  .perfil-header {
+
+    border-radius: 16px;
+
+    padding: 20px 15px;
+  }
+
+
+  .foto-container {
+
+    width: 100px;
+
+    height: 100px;
+  }
+
+
+  .informacoes-perfil h1 {
+
+    font-size: 22px;
+  }
+
+
+  .card-rapido {
+
+    min-height: 95px;
+
+    padding: 17px;
+
+    gap: 13px;
+  }
+
+
+  .icone-rapido {
+
+    width: 48px;
+
+    height: 48px;
+
+    font-size: 20px;
+  }
+
+
+  .card-rapido h3 {
+
+    font-size: 15px;
+  }
+
+
+  .card-rapido p {
+
+    font-size: 11px;
+  }
+
+
+  .opcoes-perfil {
+
+    padding-left: 12px;
+
+    padding-right: 12px;
+  }
+
+
+  .opcao-perfil {
+
+    min-height: 70px;
+
+    gap: 10px;
+  }
+
+
+  .icone-opcao {
+
+    width: 42px;
+
+    height: 42px;
+
+    font-size: 16px;
+  }
+
+
+  .texto-opcao h3 {
+
+    font-size: 13px;
+  }
+
+
+  .texto-opcao p {
+
+    font-size: 10px;
+  }
+
+}

@@ -1,0 +1,446 @@
+/* ==================================================
+   CONTEÚDO
+================================================== */
+
+.edit-profile-content {
+
+    width: 100%;
+
+    max-width: 60rem;
+
+    margin: 0 auto;
+
+    padding: 13rem 4rem 6rem;
+}
+
+
+/* ==================================================
+   VOLTAR
+================================================== */
+
+.back-link {
+
+    display: inline-flex;
+
+    align-items: center;
+
+    gap: .8rem;
+
+    margin-bottom: 2rem;
+
+    padding: 0;
+
+    border: none;
+
+    background: transparent;
+
+    color: var(--gray);
+
+    font-size: 1.4rem;
+
+    cursor: pointer;
+
+    transition: .3s;
+}
+
+.back-link:hover {
+
+    color: var(--pink);
+
+}
+
+
+/* ==================================================
+   CARD
+================================================== */
+
+.edit-profile-card {
+
+    width: 100%;
+
+    background: var(--white);
+
+    border: 1px solid var(--border);
+
+    border-radius: 2.2rem;
+
+    padding: 3.5rem;
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 2.2rem;
+
+    box-shadow:
+        0 .8rem 2.5rem rgba(70, 40, 50, .06);
+}
+
+
+.edit-profile-card h1 {
+
+    font-size: 2.6rem;
+
+    color: var(--dark);
+
+}
+
+
+.edit-profile-card .subtitle {
+
+    margin-top: -1.4rem;
+
+    font-size: 1.4rem;
+
+    color: var(--gray);
+
+}
+
+
+/* ==================================================
+   FOTO
+================================================== */
+
+.edit-photo-wrapper {
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    gap: 1.2rem;
+
+    margin: .5rem 0 1rem;
+}
+
+
+.profile-photo {
+
+    position: relative;
+
+    width: 13rem;
+
+    height: 13rem;
+
+}
+
+
+.foto-edicao {
+
+    width: 100%;
+
+    height: 100%;
+
+    object-fit: cover;
+
+    border-radius: 50%;
+
+    border: .5rem solid var(--light-pink);
+}
+
+
+.photo-hint {
+
+    font-size: 1.3rem;
+
+    color: var(--gray);
+
+}
+
+
+/* ==================================================
+   BOTÃO EDITAR FOTO
+================================================== */
+
+.edit-photo {
+
+    position: absolute;
+
+    right: .2rem;
+
+    bottom: .2rem;
+
+    width: 3.8rem;
+
+    height: 3.8rem;
+
+    border-radius: 50%;
+
+    border: .3rem solid var(--white);
+
+    background: var(--pink);
+
+    color: var(--white);
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    cursor: pointer;
+
+    transition: .3s;
+}
+
+
+.edit-photo:hover {
+
+    background: var(--dark-pink);
+
+    transform: scale(1.05);
+
+}
+
+
+/* ==================================================
+   CAMPOS
+================================================== */
+
+.field-group {
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: .7rem;
+}
+
+
+.field-group label {
+
+    font-size: 1.4rem;
+
+    font-weight: 600;
+
+    color: var(--dark);
+
+}
+
+
+.field-group input {
+
+    width: 100%;
+
+    padding: 1.2rem 1.5rem;
+
+    border: 1px solid var(--border);
+
+    border-radius: 1rem;
+
+    background: var(--cream);
+
+    color: var(--dark);
+
+    font-size: 1.5rem;
+
+    outline: none;
+
+    transition: .3s;
+}
+
+
+.field-group input:focus {
+
+    border-color: var(--pink);
+
+    background: var(--white);
+
+}
+
+
+/* ==================================================
+   AÇÕES
+================================================== */
+
+.edit-actions {
+
+    display: flex;
+
+    justify-content: flex-end;
+
+    gap: 1.5rem;
+
+    margin-top: 1rem;
+}
+
+
+/* CANCELAR */
+
+.cancel-button {
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    padding: 1.2rem 1.8rem;
+
+    border: 1px solid var(--border);
+
+    border-radius: 1rem;
+
+    background: var(--white);
+
+    color: var(--gray);
+
+    font-size: 1.4rem;
+
+    cursor: pointer;
+
+    transition: .3s;
+}
+
+
+.cancel-button:hover {
+
+    background: var(--nude);
+
+    color: var(--dark);
+
+}
+
+
+/* SALVAR */
+
+.save-button {
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    padding: 1.2rem 2rem;
+
+    border: none;
+
+    border-radius: 1rem;
+
+    background: var(--pink);
+
+    color: var(--white);
+
+    font-size: 1.4rem;
+
+    font-weight: 600;
+
+    cursor: pointer;
+
+    transition: .3s;
+}
+
+
+.save-button:hover {
+
+    background: var(--dark-pink);
+
+    transform: translateY(-.2rem);
+
+}
+
+
+/* ==================================================
+   CELULAR
+================================================== */
+
+@media (max-width: 768px) {
+
+    .edit-profile-content {
+
+        padding: 10rem 1.5rem 4rem;
+
+    }
+
+
+    .edit-profile-card {
+
+        padding: 2.5rem;
+
+        border-radius: 1.8rem;
+
+    }
+
+
+    .edit-profile-card h1 {
+
+        font-size: 2.3rem;
+
+    }
+
+
+    .edit-profile-card .subtitle {
+
+        font-size: 1.3rem;
+
+    }
+
+
+    .edit-actions {
+
+        flex-direction: column-reverse;
+
+    }
+
+
+    .cancel-button,
+    .save-button {
+
+        width: 100%;
+
+        justify-content: center;
+
+    }
+
+}
+
+
+/* ==================================================
+   CELULARES PEQUENOS
+================================================== */
+
+@media (max-width: 450px) {
+
+    .edit-profile-content {
+
+        padding-left: 1.2rem;
+
+        padding-right: 1.2rem;
+
+    }
+
+
+    .edit-profile-card {
+
+        padding: 2rem;
+
+    }
+
+
+    .profile-photo {
+
+        width: 11rem;
+
+        height: 11rem;
+
+    }
+
+
+    .edit-photo {
+
+        width: 3.5rem;
+
+        height: 3.5rem;
+
+    }
+
+
+    .field-group input {
+
+        font-size: 1.4rem;
+
+    }
+
+}

@@ -1,0 +1,894 @@
+/* ========================================
+   VARIÁVEIS
+======================================== */
+
+:root {
+  --pink: #c98291;
+  --dark-pink: #a95f70;
+  --rose: #e7b8c0;
+  --light-pink: #f9edef;
+  --cream: #fcf8f5;
+  --nude: #f5eee9;
+  --gold: #b18a52;
+  --dark: #3d3034;
+  --gray: #7c7074;
+  --white: #ffffff;
+  --border: #e9dddf;
+}
+
+
+/* ========================================
+   RESET
+======================================== */
+
+* {
+  box-sizing: border-box;
+}
+
+
+/* ========================================
+   PÁGINA
+======================================== */
+
+.pagina-agendamento {
+  min-height: 100vh;
+
+  background:
+    linear-gradient(
+      180deg,
+      #fffafc 0%,
+      #ffffff 100%
+    );
+
+  padding: 20px 16px 35px;
+
+  color: var(--dark);
+}
+
+
+/* ========================================
+   TÍTULO
+======================================== */
+
+.titulo-agendamento {
+  width: 100%;
+  max-width: 900px;
+
+  margin: 0 auto 15px;
+
+  background: var(--white);
+
+  padding: 22px 20px;
+
+  border: 1px solid var(--border);
+
+  border-radius: 18px;
+
+  box-shadow:
+    0 3px 15px
+    rgba(60, 35, 41, 0.08);
+}
+
+
+.titulo-agendamento h1 {
+  margin: 0;
+
+  color: var(--dark);
+
+  font-family:
+    Georgia,
+    "Times New Roman",
+    serif;
+
+  font-style: normal;
+
+  font-size: 25px;
+
+  font-weight: 400;
+}
+
+
+/* ========================================
+   CONTEÚDO PRINCIPAL
+======================================== */
+
+.conteudo-agendamento {
+  width: 100%;
+  max-width: 900px;
+
+  margin: 0 auto;
+
+  display: grid;
+
+  grid-template-columns: 260px 1fr;
+
+  gap: 22px;
+}
+
+
+/* ========================================
+   COLUNA DE INFORMAÇÕES
+======================================== */
+
+.coluna-informacoes {
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 18px;
+}
+
+
+/* ========================================
+   CARDS
+======================================== */
+
+.informacoes,
+.detalhes-agendamento {
+  background: var(--white);
+
+  border: 1px solid var(--border);
+
+  border-radius: 18px;
+
+  padding: 20px;
+
+  box-shadow:
+    0 3px 15px
+    rgba(60, 35, 41, 0.06);
+}
+
+
+/* ========================================
+   TÍTULOS
+======================================== */
+
+.informacoes h2,
+.detalhes-agendamento h2,
+.area-agendamento h2 {
+  color: var(--dark);
+
+  font-family:
+    Georgia,
+    "Times New Roman",
+    serif;
+
+  font-weight: 400;
+}
+
+
+.informacoes h2 {
+  margin: 0 0 20px;
+
+  font-size: 19px;
+}
+
+
+.detalhes-agendamento h2 {
+  margin: 0 0 16px;
+
+  font-size: 18px;
+}
+
+
+/* ========================================
+   CAMPOS
+======================================== */
+
+.campo {
+  margin-bottom: 16px;
+}
+
+
+.campo:last-child {
+  margin-bottom: 0;
+}
+
+
+.campo label {
+  display: block;
+
+  color: var(--dark);
+
+  font-size: 12px;
+
+  font-weight: 600;
+
+  margin-bottom: 6px;
+}
+
+
+.campo input,
+.campo select {
+  width: 100%;
+
+  height: 42px;
+
+  padding: 0 11px;
+
+  border: 1px solid var(--border);
+
+  border-radius: 10px;
+
+  background: #fff;
+
+  color: var(--dark);
+
+  font-size: 12px;
+
+  outline: none;
+
+  transition: 0.2s ease;
+}
+
+
+.campo input::placeholder {
+  color: #aaa;
+}
+
+
+.campo input:focus,
+.campo select:focus {
+  border-color: var(--pink);
+
+  background: var(--white);
+
+  box-shadow:
+    0 0 0 3px
+    rgba(201, 130, 145, 0.15);
+}
+
+
+/* ========================================
+   DETALHES
+======================================== */
+
+.detalhes-agendamento {
+  border: 1px solid var(--border);
+}
+
+
+.detalhes-agendamento p {
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 3px;
+
+  color: var(--gray);
+
+  font-size: 12px;
+
+  line-height: 1.5;
+
+  margin: 13px 0;
+}
+
+
+.detalhes-agendamento strong {
+  color: var(--dark);
+
+  font-size: 11px;
+
+  font-weight: 600;
+
+  text-transform: uppercase;
+
+  letter-spacing: 0.3px;
+}
+
+
+/* ========================================
+   ÁREA DO AGENDAMENTO
+======================================== */
+
+.area-agendamento {
+  background: var(--white);
+
+  border: 1px solid var(--border);
+
+  border-radius: 18px;
+
+  padding: 25px;
+
+  box-shadow:
+    0 3px 15px
+    rgba(60, 35, 41, 0.06);
+}
+
+
+.area-agendamento > h2 {
+  margin: 0 0 18px;
+
+  color: var(--dark);
+
+  font-size: 20px;
+}
+
+
+/* ========================================
+   CALENDÁRIO
+======================================== */
+
+.calendario {
+  border: 1px solid var(--border);
+
+  border-radius: 15px;
+
+  padding: 18px;
+
+  background:
+    linear-gradient(
+      145deg,
+      #ffffff,
+      var(--cream)
+    );
+
+  box-shadow:
+    0 1rem 2rem
+    rgba(61, 48, 52, 0.04);
+}
+
+
+/* ========================================
+   MÊS
+======================================== */
+
+.mes {
+  text-align: center;
+
+  color: var(--pink);
+
+  font-size: 17px;
+
+  font-weight: 700;
+
+  margin-bottom: 18px;
+
+  text-transform: capitalize;
+}
+
+
+/* ========================================
+   DIAS DA SEMANA
+======================================== */
+
+.dias-semana,
+.dias {
+  display: grid;
+
+  grid-template-columns:
+    repeat(7, minmax(0, 1fr));
+
+  gap: 7px;
+}
+
+
+.dias-semana {
+  margin-bottom: 8px;
+}
+
+
+.dias-semana span {
+  text-align: center;
+
+  color: var(--gray);
+
+  font-size: 10px;
+
+  font-weight: 600;
+}
+
+
+/* ========================================
+   DIAS
+======================================== */
+
+.dia {
+  width: 100%;
+
+  aspect-ratio: 1;
+
+  border: 1px solid transparent;
+
+  border-radius: 10px;
+
+  background: var(--white);
+
+  color: var(--dark);
+
+  font-size: 12px;
+
+  font-weight: 600;
+
+  cursor: pointer;
+
+  transition:
+    transform 0.15s ease,
+    background 0.15s ease,
+    color 0.15s ease,
+    border-color 0.15s ease;
+}
+
+
+/* ========================================
+   DIA HOVER
+======================================== */
+
+.dia:hover {
+  background: var(--light-pink);
+
+  color: var(--dark-pink);
+
+  border-color: var(--pink);
+
+  transform: translateY(-1px);
+}
+
+
+/* ========================================
+   DIA SELECIONADO
+======================================== */
+
+.dia.selecionado {
+  background: var(--pink);
+
+  color: var(--white);
+
+  border-color: var(--pink);
+
+  font-weight: 700;
+
+  box-shadow:
+    0 8px 16px
+    rgba(201, 130, 145, 0.22);
+}
+
+
+/* ========================================
+   DIA INDISPONÍVEL
+======================================== */
+
+.dia:disabled {
+  background: #e1bec5;
+
+  color: #3c3939;
+
+  border-color: transparent;
+
+  cursor: not-allowed;
+
+  transform: none;
+}
+
+
+/* ========================================
+   ÁREA DE HORÁRIOS
+======================================== */
+
+.area-horarios {
+  margin-top: 23px;
+}
+
+
+.area-horarios h2 {
+  margin-bottom: 13px;
+
+  color: var(--dark);
+
+  font-size: 18px;
+}
+
+
+/* ========================================
+   AVISO DOS HORÁRIOS
+======================================== */
+
+.aviso-horario {
+  margin: 0;
+
+  padding: 15px;
+
+  border-radius: 12px;
+
+  background: var(--light-pink);
+
+  border: 1px solid var(--border);
+
+  color: var(--gray);
+
+  font-size: 12px;
+
+  line-height: 1.5;
+
+  text-align: center;
+}
+
+
+/* ========================================
+   HORÁRIOS
+======================================== */
+
+.horarios {
+  display: grid;
+
+  grid-template-columns:
+    repeat(4, 1fr);
+
+  gap: 9px;
+}
+
+
+.horario {
+  min-height: 42px;
+
+  border: 1px solid var(--border);
+
+  border-radius: 10px;
+
+  background: var(--light-pink);
+
+  color: var(--dark-pink);
+
+  font-size: 12px;
+
+  font-weight: 600;
+
+  cursor: pointer;
+
+  transition:
+    background 0.2s ease,
+    transform 0.2s ease,
+    border-color 0.2s ease;
+}
+
+
+/* ========================================
+   HORÁRIO HOVER
+======================================== */
+
+.horario:hover {
+  background: #f5dfe5;
+
+  border-color: var(--rose);
+
+  transform: translateY(-1px);
+}
+
+
+/* ========================================
+   HORÁRIO SELECIONADO
+======================================== */
+
+.horario.selecionado {
+  background: var(--pink);
+
+  border-color: var(--pink);
+
+  color: var(--white);
+
+  box-shadow:
+    0 8px 16px
+    rgba(201, 130, 145, 0.22);
+}
+
+/* ========================================
+   PROCEDIMENTO SELECIONADO
+======================================== */
+
+.procedimento-selecionado {
+  width: 100%;
+
+  padding: 1.4rem 1.5rem;
+
+  margin-top: 0.5rem;
+
+  background: var(--light-pink);
+
+  border: 1px solid var(--border);
+
+  border-radius: 1rem;
+
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 0.4rem;
+}
+
+
+/* ========================================
+   MENSAGEM
+======================================== */
+
+.mensagem-agendamento {
+  margin: 17px 0 0;
+
+  padding: 13px;
+
+  border-radius: 11px;
+
+  background: var(--light-pink);
+
+  border: 1px solid var(--border);
+
+  color: var(--dark-pink);
+
+  font-size: 12px;
+
+  line-height: 1.5;
+
+  text-align: center;
+}
+
+
+/* ========================================
+   BOTÃO CONFIRMAR
+======================================== */
+
+.botao-confirmar {
+  width: 100%;
+
+  min-height: 48px;
+
+  margin-top: 21px;
+
+  border: none;
+
+  border-radius: 12px;
+
+  background: var(--pink);
+
+  color: var(--white);
+
+  font-size: 13px;
+
+  font-weight: 600;
+
+  cursor: pointer;
+
+  box-shadow:
+    0 5px 12px
+    rgba(169, 95, 112, 0.18);
+
+  transition:
+    background 0.2s ease,
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+
+/* ========================================
+   BOTÃO HOVER
+======================================== */
+
+.botao-confirmar:hover {
+  background: var(--dark-pink);
+
+  transform: translateY(-2px);
+
+  box-shadow:
+    0 7px 15px
+    rgba(169, 95, 112, 0.23);
+}
+
+
+/* ========================================
+   BOTÃO ACTIVE
+======================================== */
+
+.botao-confirmar:active {
+  transform: translateY(0);
+}
+
+
+/* ========================================
+   RESPONSIVIDADE
+======================================== */
+
+@media (max-width: 768px) {
+
+  .pagina-agendamento {
+    padding: 12px 12px 30px;
+  }
+
+
+  /* TÍTULO */
+
+  .titulo-agendamento {
+    padding: 18px;
+
+    margin-bottom: 12px;
+
+    border-radius: 16px;
+  }
+
+
+  .titulo-agendamento h1 {
+    font-size: 23px;
+  }
+
+
+  /* CONTEÚDO */
+
+  .conteudo-agendamento {
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 14px;
+  }
+
+
+  /* CARDS */
+
+  .informacoes,
+  .detalhes-agendamento,
+  .area-agendamento {
+    padding: 18px;
+
+    border-radius: 16px;
+  }
+
+
+  /* INFORMAÇÕES */
+
+  .informacoes h2 {
+    font-size: 18px;
+
+    margin-bottom: 17px;
+  }
+
+
+  /* DETALHES */
+
+  .detalhes-agendamento {
+    order: 2;
+  }
+
+
+  /* ÁREA DE AGENDAMENTO */
+
+  .area-agendamento {
+    order: 1;
+  }
+
+
+  .area-agendamento > h2 {
+    font-size: 19px;
+
+    margin-bottom: 16px;
+  }
+
+
+  /* CALENDÁRIO */
+
+  .calendario {
+    padding: 14px;
+
+    border-radius: 13px;
+  }
+
+
+  .mes {
+    font-size: 16px;
+
+    margin-bottom: 16px;
+  }
+
+
+  .dias-semana,
+  .dias {
+    gap: 5px;
+  }
+
+
+  .dias-semana span {
+    font-size: 9px;
+  }
+
+
+  .dia {
+    border-radius: 9px;
+
+    font-size: 11px;
+  }
+
+
+  /* HORÁRIOS */
+
+  .area-horarios {
+    margin-top: 21px;
+  }
+
+
+  .area-horarios h2 {
+    font-size: 18px;
+  }
+
+
+  .horarios {
+    grid-template-columns:
+      repeat(3, 1fr);
+
+    gap: 7px;
+  }
+
+
+  .horario {
+    min-height: 41px;
+
+    font-size: 11px;
+
+    border-radius: 9px;
+  }
+
+
+  /* BOTÃO */
+
+  .botao-confirmar {
+    min-height: 50px;
+
+    font-size: 13px;
+
+    margin-top: 19px;
+  }
+
+}
+
+
+/* ========================================
+   TELAS MUITO PEQUENAS
+======================================== */
+
+@media (max-width: 380px) {
+
+  .pagina-agendamento {
+    padding: 10px 9px 25px;
+  }
+
+
+  .titulo-agendamento,
+  .informacoes,
+  .detalhes-agendamento,
+  .area-agendamento {
+    padding: 15px;
+  }
+
+
+  .titulo-agendamento h1 {
+    font-size: 21px;
+  }
+
+
+  .calendario {
+    padding: 10px;
+  }
+
+
+  .dias-semana,
+  .dias {
+    gap: 3px;
+  }
+
+
+  .dia {
+    font-size: 10px;
+
+    border-radius: 7px;
+  }
+
+
+  .horarios {
+    grid-template-columns:
+      repeat(2, 1fr);
+  }
+
+
+  .horario {
+    min-height: 40px;
+
+    font-size: 11px;
+  }
+
+}
