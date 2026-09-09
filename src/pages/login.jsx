@@ -40,14 +40,15 @@ function Login({ setPagina }) {
     }, 1000);
   };
 
-  const handleGoogleLogin = async (e) => {
+const handleGoogleLogin = async (e) => {
     e.preventDefault();
     setMensagem("");
 
     const { error } = await supabase.auth.signInWithOAuth({
       provider: "google",
       options: {
-        redirectTo: window.location.origin + window.location.pathname,
+        // Altere para apontar apenas para a raiz do projeto atual
+        redirectTo: window.location.origin + "/",
       },
     });
 
