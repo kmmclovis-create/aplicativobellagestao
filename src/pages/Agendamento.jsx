@@ -40,6 +40,8 @@ function Agendamento({ setPagina }) {
   const [erroTelefone, setErroTelefone] =
     useState("");
 
+  const [horariosOcupados, setHorariosOcupados] = useState([]);
+
   // Estado para controlar o mês e ano exibidos no calendário
   const [dataVisualizacao, setDataVisualizacao] = useState(new Date());
 
@@ -86,42 +88,36 @@ function Agendamento({ setPagina }) {
   }, []);
 
 
-
-  const [horariosOcupados, setHorariosOcupados] = useState([]);
+  // =========================================================
+  // CARREGAR HORÁRIOS OCUPADOS DO SUPABASE
+  // =========================================================
 
   useEffect(() => {
-  async function carregarHorariosOcupados() {
-    if (!dataSelecionada) {
-      setHorariosOcupados([]);
-      return;
+    async function carregarHorariosOcupados() {
+      if (!dataSelecionada) {
+        setHorariosOcupados([]);
+        return;
+      }
+
+      const dataFormatada = `${anoAtual}-${String(mesAtual + 1).padStart(2, "0")}-${String(dataSelecionada).padStart(2, "0")}`;
+
+      const { data, error } = await supabase
+        .from('agendamentos')
+        .select('horario')
+        .eq('data', dataFormatada);
+
+      if (!error && data) {
+        const ocupados = data.map(item => item.horario ? item.horario.slice(0, 5) : "");
+        setHorariosOcupados(ocupados);
+      }
     }
 
-    const dataFormatada = `${anoAtual}-${String(mesAtual + 1).padStart(2, "0")}-${String(dataSelecionada).padStart(2, "0")}`;
+    carregarHorariosOcupados();
+  }, [dataSelecionada, mesAtual, anoAtual]);
 
-    const { data, error } = await supabase
-      .from('agendamentos')
-      .select('horario')
-      .eq('data', dataFormatada);
-
-    if (!error && data) {
-      const ocupados = data.map(item => item.horario ? item.horario.slice(0, 5) : "");
-      setHorariosOcupados(ocupados);
-    }
-  }
-
-  carregarHorariosOcupados();
-}, [dataSelecionada, mesAtual, anoAtual]);
-
-  const horariosBase = chaveHorario && dataSelecionada
-  ? horarios[chaveHorario]?.[dataSelecionada] || []
-  : [];
-
-const horariosDisponiveis = horariosBase.filter(
-  horario => !horariosOcupados.includes(horario)
-);
 
   // =========================================================
-  // HORÁRIOS DISPONÍVEIS E MAPEAMENTO INTELIGENTE
+  // HORÁRIOS BASE E MAPEAMENTO INTELIGENTE
   // =========================================================
 
   const horarios = {
@@ -291,7 +287,7 @@ const horariosDisponiveis = horariosBase.filter(
 
 
   // =========================================================
-  // VERIFICAR SE O DIA JÁ PASSOU
+  // VERIFICAÇÕES DE DATA E HORA
   // =========================================================
 
   function diaJaPassou(dia) {
@@ -304,11 +300,7 @@ const horariosDisponiveis = horariosBase.filter(
     return dataCalendario < hojeReal;
   }
 
-  // =========================================================
-  // VERIFICAR SE O HORÁRIO JÁ PASSOU (SE FOR HOJE)
-  // =========================================================
-
- function horarioJaPassou(horarioStr, dia) {
+  function horarioJaPassou(horarioStr, dia) {
     const hojeReal = new Date();
     const anoHoje = hojeReal.getFullYear();
     const mesHoje = hojeReal.getMonth();
@@ -330,7 +322,7 @@ const horariosDisponiveis = horariosBase.filter(
 
 
   // =========================================================
-  // MAPEAR PROCEDIMENTO PARA AS CHAVES DE HORÁRIOS
+  // MAPEAR PROCEDIMENTO E FILTRAR HORÁRIOS DISPONÍVEIS
   // =========================================================
 
   function obterChaveHorarios() {
@@ -347,11 +339,6 @@ const horariosDisponiveis = horariosBase.filter(
     return "Limpeza de pele";
   }
 
-
-  // =========================================================
-  // VERIFICAR SE O DIA TEM HORÁRIO
-  // =========================================================
-
   function diaTemHorario(dia) {
     if (!agendamentoDetalhes) return false;
 
@@ -362,14 +349,18 @@ const horariosDisponiveis = horariosBase.filter(
     }
 
     const diaSemana = new Date(anoAtual, mesAtual, dia).getDay();
-    return diaSemana !== 0; // Libera dias úteis por padrão
+    return diaSemana !== 0;
   }
 
-
   const chaveHorario = obterChaveHorarios();
- const horariosBase = chaveHorario && dataSelecionada
+  const horariosBase = chaveHorario && dataSelecionada
     ? horarios[chaveHorario]?.[dataSelecionada] || ["09:00", "10:30", "14:00", "15:30", "17:00"]
     : [];
+
+  // Filtra tanto os horários já passados quanto os já ocupados no Supabase
+  const horariosDisponiveis = horariosBase.filter(
+    horario => !horariosOcupados.includes(horario)
+  );
 
 
   // =========================================================
@@ -464,7 +455,6 @@ const horariosDisponiveis = horariosBase.filter(
       dataSelecionada
     ).padStart(2, "0")}`;
 
-    // Monta o nome do procedimento incluindo a variante/opção escolhida
     const nomeProcedimentoCompleto = agendamentoDetalhes.variante
       ? `${agendamentoDetalhes.procedimento} - ${agendamentoDetalhes.variante}`
       : agendamentoDetalhes.procedimento;
@@ -497,6 +487,7 @@ const horariosDisponiveis = horariosBase.filter(
       }
     }, 1000);
   }
+
   return (
     <main className="pagina-agendamento">
       <div className="titulo-agendamento">
@@ -559,7 +550,6 @@ const horariosDisponiveis = horariosBase.filter(
           <h2>Selecione uma Data</h2>
 
           <div className="calendario">
-            {/* Cabeçalho do mês com botões de navegação */}
             <div className="mes" style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
               <button type="button" onClick={voltarMes} style={{ background: "none", border: "none", cursor: "pointer", fontSize: "16px", color: "#a95f70" }}>◀</button>
               <span>{nomeMesFormatado} {anoAtual}</span>
@@ -603,7 +593,7 @@ const horariosDisponiveis = horariosBase.filter(
             </div>
           </div>
 
-         <div className="area-horarios">
+          <div className="area-horarios">
             <h2>Horários Disponíveis</h2>
             {!agendamentoDetalhes ? (
               <p className="aviso-horario">Nenhum procedimento selecionado.</p>
