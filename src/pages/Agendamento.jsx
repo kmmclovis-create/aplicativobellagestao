@@ -270,6 +270,31 @@ function Agendamento({ setPagina }) {
     return dataCalendario < hojeReal;
   }
 
+  // =========================================================
+  // VERIFICAR SE O HORÁRIO JÁ PASSOU (SE FOR HOJE)
+  // =========================================================
+
+  function horarioJa Passou(horarioStr, dia) {
+    const hojeReal = new Date();
+    const anoHoje = hojeReal.getFullYear();
+    const mesHoje = hojeReal.getMonth();
+    const diaHoje = hojeReal.getDate();
+
+    // Se o dia selecionado não for hoje, nenhum horário passou
+    if (anoAtual !== anoHoje || mesAtual !== mesHoje || dia !== diaHoje) {
+      return false;
+    }
+
+    const [hStr, mStr] = horarioStr.split(":");
+    const horaSlot = Number(hStr);
+    const minutoSlot = Number(mStr);
+
+    const horaAtual = hojeReal.getHours();
+    const minutoAtual = hojeReal.getMinutes();
+
+    return horaSlot < horaAtual || (horaSlot === horaAtual && minutoSlot <= minutoAtual);
+  }
+
 
   // =========================================================
   // MAPEAR PROCEDIMENTO PARA AS CHAVES DE HORÁRIOS
@@ -546,7 +571,7 @@ function Agendamento({ setPagina }) {
             </div>
           </div>
 
-          <div className="area-horarios">
+         <div className="area-horarios">
             <h2>Horários Disponíveis</h2>
             {!agendamentoDetalhes ? (
               <p className="aviso-horario">Nenhum procedimento selecionado.</p>
@@ -556,19 +581,29 @@ function Agendamento({ setPagina }) {
               <p className="aviso-horario">Não há horários disponíveis para esta data.</p>
             ) : (
               <div className="horarios">
-                {horariosDisponiveis.map((horario) => (
-                  <button
-                    key={horario}
-                    type="button"
-                    className={horarioSelecionado === horario ? "horario selecionado" : "horario"}
-                    onClick={() => {
-                      setHorarioSelecionado(horario);
-                      setMensagem("");
-                    }}
-                  >
-                    {horario}
-                  </button>
-                ))}
+                {horariosDisponiveis.map((horario) => {
+                  const passado = horarioJaPassou(horario, dataSelecionada);
+
+                  return (
+                    <button
+                      key={horario}
+                      type="button"
+                      disabled={passado}
+                      className={`
+                        horario
+                        ${horarioSelecionado === horario ? "selecionado" : ""}
+                        ${passado ? "indisponivel" : ""}
+                      `}
+                      onClick={() => {
+                        if (passado) return;
+                        setHorarioSelecionado(horario);
+                        setMensagem("");
+                      }}
+                    >
+                      {horario}
+                    </button>
+                  );
+                })}
               </div>
             )}
           </div>
