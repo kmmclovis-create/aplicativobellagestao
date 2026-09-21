@@ -311,7 +311,7 @@ function Home({ setPagina }) {
             </h3>
 
             <span>
-              Cuidados feitos aqui, com a Mah
+              Cuidados feitos aqui, com a Bella
             </span>
 
           </div>
