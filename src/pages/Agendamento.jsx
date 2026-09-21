@@ -274,13 +274,12 @@ function Agendamento({ setPagina }) {
   // VERIFICAR SE O HORÁRIO JÁ PASSOU (SE FOR HOJE)
   // =========================================================
 
-  function horarioJaPassou(horarioStr, dia) {
+ function horarioJaPassou(horarioStr, dia) {
     const hojeReal = new Date();
     const anoHoje = hojeReal.getFullYear();
     const mesHoje = hojeReal.getMonth();
     const diaHoje = hojeReal.getDate();
 
-    // Se o dia selecionado não for hoje, nenhum horário passou
     if (anoAtual !== anoHoje || mesAtual !== mesHoje || dia !== diaHoje) {
       return false;
     }
