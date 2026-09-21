@@ -86,6 +86,40 @@ function Agendamento({ setPagina }) {
   }, []);
 
 
+
+  const [horariosOcupados, setHorariosOcupados] = useState([]);
+
+  useEffect(() => {
+  async function carregarHorariosOcupados() {
+    if (!dataSelecionada) {
+      setHorariosOcupados([]);
+      return;
+    }
+
+    const dataFormatada = `${anoAtual}-${String(mesAtual + 1).padStart(2, "0")}-${String(dataSelecionada).padStart(2, "0")}`;
+
+    const { data, error } = await supabase
+      .from('agendamentos')
+      .select('horario')
+      .eq('data', dataFormatada);
+
+    if (!error && data) {
+      const ocupados = data.map(item => item.horario ? item.horario.slice(0, 5) : "");
+      setHorariosOcupados(ocupados);
+    }
+  }
+
+  carregarHorariosOcupados();
+}, [dataSelecionada, mesAtual, anoAtual]);
+
+  const horariosBase = chaveHorario && dataSelecionada
+  ? horarios[chaveHorario]?.[dataSelecionada] || []
+  : [];
+
+const horariosDisponiveis = horariosBase.filter(
+  horario => !horariosOcupados.includes(horario)
+);
+
   // =========================================================
   // HORÁRIOS DISPONÍVEIS E MAPEAMENTO INTELIGENTE
   // =========================================================
