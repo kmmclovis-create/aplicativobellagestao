@@ -274,7 +274,7 @@ function Agendamento({ setPagina }) {
   // VERIFICAR SE O HORÁRIO JÁ PASSOU (SE FOR HOJE)
   // =========================================================
 
-  function horarioJa Passou(horarioStr, dia) {
+  function horarioJaPassou(horarioStr, dia) {
     const hojeReal = new Date();
     const anoHoje = hojeReal.getFullYear();
     const mesHoje = hojeReal.getMonth();
