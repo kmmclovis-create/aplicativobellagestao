@@ -1,6 +1,13 @@
 /* ========================================
    VARIÁVEIS
 ======================================== */
+.horario:disabled, 
+.horario.indisponivel {
+  opacity: 0.4;
+  cursor: not-allowed;
+  background-color: #f2e6e8;
+  border-color: #e0d0d3;
+}
 
 :root {
   --pink: #c98291;
