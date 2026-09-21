@@ -367,10 +367,9 @@ const horariosDisponiveis = horariosBase.filter(
 
 
   const chaveHorario = obterChaveHorarios();
-  const horariosDisponiveis =
-    chaveHorario && dataSelecionada
-      ? horarios[chaveHorario]?.[dataSelecionada] || ["09:00", "10:30", "14:00", "15:30", "17:00"]
-      : [];
+ const horariosBase = chaveHorario && dataSelecionada
+    ? horarios[chaveHorario]?.[dataSelecionada] || ["09:00", "10:30", "14:00", "15:30", "17:00"]
+    : [];
 
 
   // =========================================================
