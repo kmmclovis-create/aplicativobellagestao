@@ -375,31 +375,35 @@
    CARD
 ========================================================= */
 
+/* =========================================================
+   PADRONIZAÇÃO EXATA DOS CARDS
+========================================================= */
+
 .produto-card {
-
-  width: 100%;
-
-  min-height: 100%;
-
+  height: 100%;
   display: flex;
-
   flex-direction: column;
+  justify-content: space-between;
+}
 
+/* Fixa o espaço do título para ter sempre o mesmo tamanho (ex: até 3 linhas) */
+.produto-conteudo h3 {
+  font-size: 1.8rem;
+  line-height: 1.3;
+  height: 7rem; /* Altura fixa equivalente a 3 linhas */
   overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+}
 
-  background: #fff;
-
-  border:
-    1px solid
-    var(--border);
-
-  border-radius: 0;
-
-  box-shadow:
-    0 .5rem 2rem
-    rgba(80, 40, 50, .04);
-
-  transition: .4s;
+/* Fixa o espaço da descrição para alinhar o preço e o botão em baixo */
+.produto-conteudo p {
+  height: 6rem; /* Altura fixa para o texto descritivo */
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
 }
 
 
