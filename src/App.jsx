@@ -9,6 +9,7 @@ import Agendamento from "./pages/Agendamento";
 import Procedimentos from "./pages/Procedimentos";
 import Produtos from "./pages/Produtos";
 import Carrinho from "./pages/Carrinho";
+import Pagamento from "./pages/Pagamento";
 import Cadastro from "./pages/Cadastro";
 import Login from "./pages/login";
 
@@ -57,6 +58,10 @@ function App() {
 
       {pagina === "carrinho" && (
         <Carrinho setPagina={setPagina} />
+      )}
+
+       {pagina === "pagamento" && (
+        <Pagamento setPagina={setPagina} />
       )}
 
       {pagina === "cadastro" && (
