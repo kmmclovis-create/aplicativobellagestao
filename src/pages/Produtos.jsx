@@ -245,7 +245,7 @@ function Produtos() {
         ) : (
           /* =====================================
              SEM RESULTADOS
-          ===================================== */}
+          ===================================== */
           <div className="sem-produtos">
             <div className="sem-produtos-icon">
               🔍
