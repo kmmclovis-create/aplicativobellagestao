@@ -12,6 +12,7 @@ import reparacao from "../assets/imagens/reparacao.jpeg";
 
 function Home({ setPagina }) {
   useEffect(() => {
+    // 1. Lógica de scroll existente
     const rolarParaSecao = () => {
       const id = window.location.hash.replace("#", "");
 
@@ -33,8 +34,26 @@ function Home({ setPagina }) {
 
     window.addEventListener("hashchange", rolarParaSecao);
 
+    // 2. Integração do Landbot via script dinâmico
+    const script = document.createElement("script");
+    script.type = "module";
+    script.src = "https://cdn.landbot.io/landbot-3/landbot-3.0.0.mjs";
+    script.async = true;
+
+    script.onload = () => {
+      window.myLandbot = new window.Landbot.Livechat({
+        configUrl: 'https://storage.googleapis.com/landbot.online/v3/H-3491047-26IYRFXEASURTNTP/index.json',
+      });
+    };
+
+    document.body.appendChild(script);
+
     return () => {
       window.removeEventListener("hashchange", rolarParaSecao);
+      // Remove o script do Landbot caso o componente seja desmontado (opcional)
+      if (script.parentNode) {
+        script.parentNode.removeChild(script);
+      }
     };
   }, []);
 
