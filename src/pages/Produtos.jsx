@@ -47,40 +47,80 @@ function Produtos() {
 
 
   // ==============================
-  // ADICIONAR AO CARRINHO
+  // ADICIONAR AO CARRINHO (SUPABASE / SESSIONSTORAGE)
   // ==============================
 
-  function adicionarCarrinho(produto) {
+  async function adicionarCarrinho(produto) {
     try {
-      const carrinhoSalvo = sessionStorage.getItem("carrinho");
-      const carrinho = carrinhoSalvo ? JSON.parse(carrinhoSalvo) : [];
+      const { data: { user } } = await supabase.auth.getUser();
 
-      const indiceExistente = carrinho.findIndex(
-        (item) => item.id === produto.id
-      );
+      if (user) {
+        // Se estiver logado, grava na tabela carrinho_itens do Supabase
+        const { data: itemExistente, error: erroBusca } = await supabase
+          .from("carrinho_itens")
+          .select("id, quantidade")
+          .eq("perfil_id", user.id)
+          .eq("produto_id", produto.id)
+          .maybeSingle();
 
-      if (indiceExistente !== -1) {
-        carrinho[indiceExistente] = {
-          ...carrinho[indiceExistente],
-          quantidade:
-            (Number(carrinho[indiceExistente].quantidade) || 1) + 1
-        };
+        if (erroBusca) {
+          console.error("Erro ao verificar item no carrinho:", erroBusca.message);
+        }
+
+        if (itemExistente) {
+          // Atualiza a quantidade se já existir
+          const { error: erroUpdate } = await supabase
+            .from("carrinho_itens")
+            .update({ quantidade: itemExistente.quantidade + 1 })
+            .eq("id", itemExistente.id);
+
+          if (erroUpdate) throw erroUpdate;
+        } else {
+          // Insere um novo registo se não existir
+          const { error: erroInsert } = await supabase
+            .from("carrinho_itens")
+            .insert([{
+              perfil_id: user.id,
+              produto_id: produto.id,
+              quantidade: 1,
+              selecionado: true
+            }]);
+
+          if (erroInsert) throw erroInsert;
+        }
       } else {
-        carrinho.push({
-          id: produto.id,
-          nome: produto.nome,
-          categoria: produto.categoria,
-          descricao: produto.descricao,
-          preco: Number(produto.preco),
-          imagem: produto.imagem_url,
-          quantidade: 1
-        });
-      }
+        // Se for visitante, utiliza o sessionStorage
+        const carrinhoSalvo = sessionStorage.getItem("carrinho");
+        const carrinho = carrinhoSalvo ? JSON.parse(carrinhoSalvo) : [];
 
-      sessionStorage.setItem(
-        "carrinho",
-        JSON.stringify(carrinho)
-      );
+        const indiceExistente = carrinho.findIndex(
+          (item) => item.id === produto.id
+        );
+
+        if (indiceExistente !== -1) {
+          carrinho[indiceExistente] = {
+            ...carrinho[indiceExistente],
+            quantidade:
+              (Number(carrinho[indiceExistente].quantidade) || 1) + 1
+          };
+        } else {
+          carrinho.push({
+            id: produto.id,
+            nome: produto.nome,
+            categoria: produto.categoria,
+            descricao: produto.descricao,
+            preco: Number(produto.preco),
+            imagem: produto.imagem_url,
+            quantidade: 1,
+            selecionado: true
+          });
+        }
+
+        sessionStorage.setItem(
+          "carrinho",
+          JSON.stringify(carrinho)
+        );
+      }
 
       window.dispatchEvent(
         new Event("carrinhoAtualizado")
