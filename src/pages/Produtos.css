@@ -6,19 +6,13 @@
   --pink: #c98291;
   --dark-pink: #a95f70;
   --rose: #e7b8c0;
-
   --light-pink: #f9edef;
-
   --cream: #fcf8f5;
   --nude: #f5eee9;
-
   --gold: #b18a52;
-
   --dark: #3d3034;
   --gray: #7c7074;
-
   --white: #ffffff;
-
   --border: #e9dddf;
 }
 
@@ -30,17 +24,10 @@
 .produtos-page {
   width: 100%;
   min-height: 100vh;
-
   background: #fff;
   color: var(--dark);
-
-  font-family:
-    Arial,
-    Helvetica,
-    sans-serif;
-
+  font-family: Arial, Helvetica, sans-serif;
   font-size: 1.6rem;
-
   overflow-x: hidden;
 }
 
@@ -50,23 +37,9 @@
 ========================================================= */
 
 .produtos-hero {
-
-  padding:
-    15rem
-    9%
-    5rem;
-
-  background:
-    linear-gradient(
-      135deg,
-      var(--cream),
-      #fff 70%
-    );
-
-  border-bottom:
-    1px solid
-    var(--border);
-
+  padding: 15rem 9% 5rem;
+  background: linear-gradient(135deg, var(--cream), #fff 70%);
+  border-bottom: 1px solid var(--border);
   text-align: center;
 }
 
@@ -76,66 +49,42 @@
 ========================================================= */
 
 .produtos-intro {
-
   max-width: 70rem;
-
   margin: 0 auto;
 }
 
 
 .produtos-label {
-
   display: inline-block;
-
   margin-bottom: 1.5rem;
-
   color: var(--gold);
-
   font-size: 1.3rem;
-
   font-weight: 700;
-
   letter-spacing: .25rem;
 }
 
 
 .produtos-intro h1 {
-
   margin-bottom: 1.5rem;
-
   color: var(--dark);
-
-  font-family:
-    Georgia,
-    "Times New Roman",
-    serif;
-
+  font-family: Georgia, "Times New Roman", serif;
   font-size: 4.8rem;
-
   font-weight: 400;
-
   line-height: 1.2;
 }
 
 
 .produtos-intro h1 span {
-
   color: var(--pink);
-
   font-style: italic;
 }
 
 
 .produtos-intro p {
-
   max-width: 62rem;
-
   margin: 0 auto;
-
   color: var(--gray);
-
   font-size: 1.6rem;
-
   line-height: 1.8;
 }
 
@@ -145,153 +94,78 @@
 ========================================================= */
 
 .produtos-search {
-
   position: relative;
-
   width: min(60rem, 100%);
-
-  height: auto;
-
-  margin:
-    3rem
-    auto
-    0;
+  margin: 3rem auto 0;
 }
 
 
-/* =========================================================
-   ÍCONE DA PESQUISA
-========================================================= */
-
 .search-icon {
-
   position: absolute;
-
   left: 2rem;
-
   top: 50%;
-
-  transform:
-    translateY(-50%);
-
+  transform: translateY(-50%);
   color: var(--pink);
-
   font-size: 1.6rem;
-
   pointer-events: none;
-
   z-index: 2;
 }
 
 
-/* =========================================================
-   INPUT
-========================================================= */
-
 .produtos-search input {
-
   width: 100%;
-
   height: 5.5rem;
-
-  padding:
-    0
-    5rem;
-
-  border:
-    1px solid
-    var(--border);
-
+  padding: 0 5rem;
+  border: 1px solid var(--border);
   border-radius: 3rem;
-
   outline: none;
-
   background: #fff;
-
   color: var(--dark);
-
-  font-family:
-    Arial,
-    Helvetica,
-    sans-serif;
-
+  font-family: Arial, Helvetica, sans-serif;
   font-size: 1.5rem;
-
-  box-shadow:
-    0 .8rem 2.5rem
-    rgba(80, 40, 50, .08);
-
+  box-shadow: 0 .8rem 2.5rem rgba(80, 40, 50, .08);
   transition: .3s;
 }
 
 
 .produtos-search input::placeholder {
-
   color: #aaa;
 }
 
 
 .produtos-search input:hover {
-
   border-color: var(--rose);
 }
 
 
 .produtos-search input:focus {
-
   border-color: var(--pink);
-
-  box-shadow:
-    0 .8rem 2.5rem
-    rgba(201, 130, 145, .15);
+  box-shadow: 0 .8rem 2.5rem rgba(201, 130, 145, .15);
 }
 
 
-/* =========================================================
-   BOTÃO LIMPAR
-========================================================= */
-
 .clear-search {
-
   position: absolute;
-
   right: 1.7rem;
-
   top: 50%;
-
-  transform:
-    translateY(-50%);
-
+  transform: translateY(-50%);
   width: 3.2rem;
-
   height: 3.2rem;
-
   display: flex;
-
   align-items: center;
-
   justify-content: center;
-
   border: none;
-
   border-radius: 50%;
-
   background: var(--light-pink);
-
   color: var(--pink);
-
   font-size: 1.8rem;
-
   cursor: pointer;
-
   transition: .3s;
 }
 
 
 .clear-search:hover {
-
   background: var(--pink);
-
   color: #fff;
 }
 
@@ -301,11 +175,7 @@
 ========================================================= */
 
 .produtos-section {
-
-  padding:
-    6rem
-    9%
-    0;
+  padding: 6rem 9% 0;
 }
 
 
@@ -314,39 +184,21 @@
 ========================================================= */
 
 .produtos-titulo {
-
   display: flex;
-
   align-items: center;
-
   gap: 1.5rem;
-
-  margin:
-    0
-    0
-    3rem;
-
+  margin: 0 0 3rem;
   color: var(--dark);
-
-  font-family:
-    Georgia,
-    "Times New Roman",
-    serif;
-
+  font-family: Georgia, "Times New Roman", serif;
   font-size: 3rem;
-
   font-weight: 400;
 }
 
 
 .produtos-titulo::after {
-
   content: "";
-
   flex: 1;
-
   height: 1px;
-
   background: var(--border);
 }
 
@@ -356,17 +208,9 @@
 ========================================================= */
 
 .produtos-grid {
-
   display: grid;
-
-  grid-template-columns:
-    repeat(
-      3,
-      minmax(0, 1fr)
-    );
-
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 2.5rem;
-
   justify-items: stretch;
 }
 
@@ -375,63 +219,34 @@
    CARD
 ========================================================= */
 
-/* =========================================================
-   PADRONIZAÇÃO EXATA DOS CARDS
-========================================================= */
-
 .produto-card {
-  height: 100%;
+  width: 100%;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
-}
-
-/* Fixa o espaço do título para ter sempre o mesmo tamanho (ex: até 3 linhas) */
-.produto-conteudo h3 {
-  font-size: 1.8rem;
-  line-height: 1.3;
-  height: 7rem; /* Altura fixa equivalente a 3 linhas */
-  overflow: hidden;
-  display: -webkit-box;
-  -webkit-line-clamp: 3;
-  -webkit-box-orient: vertical;
-}
-
-/* Fixa o espaço da descrição para alinhar o preço e o botão em baixo */
-.produto-conteudo p {
-  height: 6rem; /* Altura fixa para o texto descritivo */
-  overflow: hidden;
-  display: -webkit-box;
-  -webkit-line-clamp: 3;
-  -webkit-box-orient: vertical;
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: 0;
+  box-shadow: 0 .5rem 2rem rgba(80, 40, 50, .04);
+  transition: .4s;
 }
 
 
 .produto-card:hover {
-
-  transform:
-    translateY(-.7rem);
-
-  box-shadow:
-    0 1.5rem 4rem
-    rgba(80, 40, 50, .12);
+  transform: translateY(-.7rem);
+  box-shadow: 0 1.5rem 4rem rgba(80, 40, 50, .12);
 }
 
 
 /* =========================================================
-   IMAGEM
-========================================================= */
-
-/* =========================================================
-   IMAGEM (PADRONIZADA PARA TODOS OS CARDS)
+   IMAGEM (PADRONIZADA E SEM CORTES)
 ========================================================= */
 
 .produto-imagem {
   position: relative;
   width: 100%;
-  height: 22rem; /* Altura fixa exata para todos os cards */
+  height: 22rem;
   overflow: hidden;
-  background: var(--nude); /* Fundo uniforme */
+  background: var(--nude);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -441,19 +256,16 @@
 .produto-imagem img {
   width: 100%;
   height: 100%;
-  object-fit: contain; /* Garante que a imagem inteira aparece sem cortes indesejados */
-  padding: 1.5rem;     /* Dá um respiro elegante ao redor da foto */
+  object-fit: contain;
+  padding: 1.5rem;
   border-radius: 0;
   display: block;
   transition: .5s;
 }
 
 
-.produto-card:hover
-.produto-imagem img {
-
-  transform:
-    scale(1.04);
+.produto-card:hover .produto-imagem img {
+  transform: scale(1.04);
 }
 
 
@@ -462,26 +274,16 @@
 ========================================================= */
 
 .produto-tag {
-
   position: absolute;
-
   top: 1.5rem;
-
   left: 1.5rem;
-
-  padding:
-    .6rem
-    1.2rem;
-
+  padding: .6rem 1.2rem;
   border-radius: 2rem;
-
   background: var(--pink);
-
   color: #fff;
-
   font-size: 1.1rem;
-
   font-weight: 600;
+  z-index: 2;
 }
 
 
@@ -490,13 +292,9 @@
 ========================================================= */
 
 .produto-conteudo {
-
   flex: 1;
-
   display: flex;
-
   flex-direction: column;
-
   padding: 0;
 }
 
@@ -506,49 +304,27 @@
 ========================================================= */
 
 .produto-categoria {
-
-  margin:
-    2.2rem
-    2.5rem
-    0;
-
+  margin: 2.2rem 2.5rem 0;
   color: var(--gold);
-
   font-size: 1.1rem;
-
   font-weight: 700;
-
   letter-spacing: .15rem;
-
   text-transform: uppercase;
 }
 
 
 /* =========================================================
-   NOME
+   NOME (LINHA DE ESPAÇAMENTO SEGURA)
 ========================================================= */
 
 .produto-conteudo h3 {
-
   margin: 0;
-
-  padding:
-    1rem
-    2.5rem
-    .8rem;
-
+  padding: 1rem 2.5rem .8rem;
   color: var(--dark);
-
-  font-family:
-    Georgia,
-    "Times New Roman",
-    serif;
-
+  font-family: Georgia, "Times New Roman", serif;
   font-size: 2rem;
-
   font-weight: 400;
-
-  line-height: 1.3;
+  line-height: 1.4;
 }
 
 
@@ -557,24 +333,12 @@
 ========================================================= */
 
 .produto-conteudo p {
-
   flex-grow: 1;
-
   margin: 0;
-
-  padding:
-    0
-    2.5rem;
-
+  padding: 0 2.5rem;
   color: var(--gray);
-
-  font-family:
-    Arial,
-    Helvetica,
-    sans-serif;
-
+  font-family: Arial, Helvetica, sans-serif;
   font-size: 1.35rem;
-
   line-height: 1.7;
 }
 
@@ -584,28 +348,17 @@
 ========================================================= */
 
 .produto-bottom {
-
   display: flex;
-
   align-items: center;
-
   justify-content: space-between;
-
   gap: 1rem;
-
-  margin:
-    2rem
-    2.5rem
-    2.5rem;
+  margin: 2rem 2.5rem 2.5rem;
 }
 
 
 .produto-bottom strong {
-
   color: var(--dark);
-
   font-size: 1.8rem;
-
   font-weight: 700;
 }
 
@@ -615,43 +368,23 @@
 ========================================================= */
 
 .btn-comprar {
-
-  padding:
-    1.1rem
-    1.5rem;
-
-  border:
-    1px solid
-    var(--pink);
-
+  padding: 1.1rem 1.5rem;
+  border: 1px solid var(--pink);
   border-radius: .4rem;
-
   background: var(--pink);
-
   color: #fff;
-
   font-size: 1.2rem;
-
   font-weight: 600;
-
   cursor: pointer;
-
   transition: .3s;
 }
 
 
 .btn-comprar:hover {
-
   background: var(--dark-pink);
-
   border-color: var(--dark-pink);
-
-  transform:
-    translateY(-2px);
-
-  box-shadow:
-    0 .8rem 2rem
-    rgba(169, 95, 112, .2);
+  transform: translateY(-2px);
+  box-shadow: 0 .8rem 2rem rgba(169, 95, 112, .2);
 }
 
 
@@ -660,58 +393,35 @@
 ========================================================= */
 
 .sem-produtos {
-
   display: flex;
-
   flex-direction: column;
-
   align-items: center;
-
   width: 100%;
-
-  padding:
-    5rem
-    2rem;
-
+  padding: 5rem 2rem;
   text-align: center;
-
   color: var(--gray);
 }
 
 
 .sem-produtos-icon {
-
   margin-bottom: 1.5rem;
-
   color: var(--rose);
-
   font-size: 3rem;
 }
 
 
 .sem-produtos h3 {
-
   color: var(--dark);
-
-  font-family:
-    Georgia,
-    "Times New Roman",
-    serif;
-
+  font-family: Georgia, "Times New Roman", serif;
   font-size: 2rem;
-
   font-weight: 400;
 }
 
 
 .sem-produtos p {
-
   margin-top: 1rem;
-
   color: var(--gray);
-
   font-size: 1.4rem;
-
   line-height: 1.6;
 }
 
@@ -721,24 +431,15 @@
 ========================================================= */
 
 @media (max-width: 1100px) {
-
   .produtos-grid {
-
-    grid-template-columns:
-      repeat(2, 1fr);
-
+    grid-template-columns: repeat(2, 1fr);
   }
-
 
   .produtos-hero,
   .produtos-section {
-
     padding-left: 5%;
-
     padding-right: 5%;
-
   }
-
 }
 
 
@@ -747,47 +448,25 @@
 ========================================================= */
 
 @media (max-width: 750px) {
-
   .produtos-hero {
-
-    padding:
-      12rem
-      5%
-      5rem;
-
+    padding: 12rem 5% 5rem;
   }
-
 
   .produtos-intro h1 {
-
     font-size: 4rem;
-
   }
-
 
   .produtos-intro p {
-
     font-size: 1.4rem;
-
   }
-
 
   .produtos-section {
-
-    padding:
-      5rem
-      5%
-      0;
-
+    padding: 5rem 5% 0;
   }
-
 
   .produtos-grid {
-
     grid-template-columns: 1fr;
-
   }
-
 }
 
 
@@ -796,66 +475,35 @@
 ========================================================= */
 
 @media (max-width: 600px) {
-
   .produtos-hero {
-
-    padding:
-      11rem
-      2rem
-      4rem;
-
+    padding: 11rem 2rem 4rem;
   }
-
 
   .produtos-intro h1 {
-
     font-size: 3.5rem;
-
   }
-
 
   .produtos-intro p {
-
     font-size: 1.4rem;
-
   }
-
 
   .produtos-section {
-
-    padding:
-      4rem
-      2rem
-      0;
-
+    padding: 4rem 2rem 0;
   }
-
 
   .produtos-titulo {
-
     font-size: 2.5rem;
-
   }
-
 
   .produto-imagem {
-
     height: 22rem;
-
   }
-
 
   .produto-bottom {
-
     flex-wrap: wrap;
-
   }
-
 
   .btn-comprar {
-
     flex: 1;
-
   }
-
 }
