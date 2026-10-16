@@ -164,22 +164,24 @@ function Carrinho({ setPagina }) {
   }, 0);
 
 
-  // =========================================================
-  // FINALIZAR PEDIDO
+ // =========================================================
+  // FINALIZAR PEDIDO (DIRECIONA PARA O PAGAMENTO)
   // =========================================================
   const finalizarPedido = () => {
     const itensSelecionados = carrinho.filter(p => p.selecionado !== false);
-    if (itensSelecionados.length === 0) return;
+    
+    if (itensSelecionados.length === 0) {
+      alert("Selecione pelo menos um item para continuar.");
+      return;
+    }
 
+    // Guarda os itens selecionados no sessionStorage para a página de pagamento ler
     sessionStorage.setItem("itensSelecionados", JSON.stringify(itensSelecionados));
     
-    // Se utilizar navegação interna por estado ou rota, ajuste aqui:
+    // Altera a página ativa no componente principal (App.jsx) para o componente de pagamento
     if (setPagina) {
-      // Exemplo se tiver uma página de pagamentos no app
-      // setPagina("pagamentos");
+      setPagina("pagamento");
     }
-    
-    alert("Pedido pronto para avançar para o pagamento!");
   };
 
 
