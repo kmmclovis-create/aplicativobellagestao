@@ -12,7 +12,6 @@ import reparacao from "../assets/imagens/reparacao.jpeg";
 
 function Home({ setPagina }) {
   useEffect(() => {
-    // 1. Lógica de scroll existente
     const rolarParaSecao = () => {
       const id = window.location.hash.replace("#", "");
 
@@ -31,29 +30,46 @@ function Home({ setPagina }) {
     };
 
     rolarParaSecao();
-
     window.addEventListener("hashchange", rolarParaSecao);
 
-    // 2. Integração do Landbot via script dinâmico
+    let landbotInstance = null;
+
+    // Carrega o script do Landbot dinamicamente
     const script = document.createElement("script");
     script.type = "module";
     script.src = "https://cdn.landbot.io/landbot-3/landbot-3.0.0.mjs";
     script.async = true;
 
     script.onload = () => {
-      window.myLandbot = new window.Landbot.Livechat({
+      landbotInstance = new window.Landbot.Livechat({
         configUrl: 'https://storage.googleapis.com/landbot.online/v3/H-3491047-26IYRFXEASURTNTP/index.json',
       });
+      window.myLandbot = landbotInstance;
     };
 
     document.body.appendChild(script);
 
+    // Função de limpeza executada quando o utilizador sai da página Home
     return () => {
       window.removeEventListener("hashchange", rolarParaSecao);
-      // Remove o script do Landbot caso o componente seja desmontado (opcional)
+
+      // 1. Destrói a instância ativa do Landbot
+      if (landbotInstance && typeof landbotInstance.destroy === "function") {
+        landbotInstance.destroy();
+      }
+      if (window.myLandbot && typeof window.myLandbot.destroy === "function") {
+        window.myLandbot.destroy();
+        window.myLandbot = null;
+      }
+
+      // 2. Remove o script do DOM
       if (script.parentNode) {
         script.parentNode.removeChild(script);
       }
+
+      // 3. Remove quaisquer elementos visuais órfãos criados pelo Landbot no body
+      const landbotElements = document.querySelectorAll('.landbot-livechat, iframe[src*="landbot"]');
+      landbotElements.forEach(el => el.remove());
     };
   }, []);
 
