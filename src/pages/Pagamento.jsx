@@ -1,5 +1,5 @@
-
 import { useState } from "react";
+import { supabase } from "../supabase"; // Ajuste o caminho conforme a localização do seu ficheiro supabase.js
 import "./Pagamento.css";
 
 const moeda = (valor) =>
@@ -54,9 +54,10 @@ function Pagamento({ setPagina }) {
     }));
   };
 
-  // Registra a preferência de pagamento.
-  // Não realiza cobranças nem salva os dados do cartão.
-  const confirmar = (evento) => {
+  // =========================================================
+  // CONFIRMAR E SALVAR PEDIDO NO SUPABASE
+  // =========================================================
+  const confirmar = async (evento) => {
     evento.preventDefault();
 
     if (produtos.length === 0) {
@@ -88,31 +89,83 @@ function Pagamento({ setPagina }) {
       }
     }
 
-    // Salva somente os dados necessários para o resumo demonstrativo.
-    // Os dados do cartão não são incluídos neste objeto.
-    const pedido = {
-      nome: nome.trim(),
-      metodo,
-      produtos,
-      total,
-      data: new Date().toISOString(),
-      status: "Pagamento não processado",
-    };
+    try {
+      // 1. Verificar se o utilizador está logado
+      const { data: { user } } = await supabase.auth.getUser();
 
-    sessionStorage.setItem(
-      "ultimoPedidoBella",
-      JSON.stringify(pedido)
-    );
+      if (!user) {
+        setMensagem("Por favor, faça login para concluir o seu pedido.");
+        if (setPagina) setPagina("login");
+        return;
+      }
 
-    setMensagem(
-      "Sua preferência foi registrada. Nenhum pagamento foi processado. " +
-        "Entre em contato com o atendimento da Bella Gestão para combinar os próximos passos."
-    );
+      setMensagem("A processar o seu pedido...");
+
+      // 2. Inserir na tabela 'pedidos' do Supabase
+      const { data: pedidoCriado, error: erroPedido } = await supabase
+        .from("pedidos")
+        .insert([{
+          perfil_id: user.id,
+          valor_total: total,
+          forma_pagamento: metodo,
+          status: "concluido"
+        }])
+        .select()
+        .single();
+
+      if (erroPedido) throw erroPedido;
+
+      const pedidoId = pedidoCriado.id;
+
+      // 3. Inserir os itens na tabela 'itens_pedido'
+      const itensParaInserir = produtos.map(produto => ({
+        pedido_id: pedidoId,
+        produto_id: produto.id || produto.produto_id,
+        quantidade: Number(produto.quantidade) || 1,
+        preco_unitario: Number(produto.preco) || 0
+      }));
+
+      const { error: erroItens } = await supabase
+        .from("itens_pedido")
+        .insert(itensParaInserir);
+
+      if (erroItens) throw erroItens;
+
+      // 4. Limpar os itens comprados da tabela 'carrinho_itens' do Supabase
+      const idsProdutosComprados = produtos.map(p => p.id || p.produto_id);
+      await supabase
+        .from("carrinho_itens")
+        .delete()
+        .eq("perfil_id", user.id)
+        .in("produto_id", idsProdutosComprados);
+
+      // 5. Limpar sessionStorage e atualizar carrinho local
+      sessionStorage.removeItem("itensSelecionados");
+      
+      let carrinhoSessao = JSON.parse(sessionStorage.getItem("carrinho")) || [];
+      carrinhoSessao = carrinhoSessao.filter(p => !idsProdutosComprados.includes(p.id));
+      sessionStorage.setItem("carrinho", JSON.stringify(carrinhoSessao));
+
+      // Disparar evento para atualizar contadores globais, se necessário
+      window.dispatchEvent(new Event("carrinhoAtualizado"));
+
+      setMensagem("Pedido realizado com sucesso! Redirecionando...");
+
+      setTimeout(() => {
+        if (setPagina) {
+          setPagina("home");
+        }
+      }, 2000);
+
+    } catch (erro) {
+      console.error("Erro ao salvar pedido:", erro);
+      setMensagem("Ocorreu um erro ao processar o seu pedido. Tente novamente.");
+    }
   };
 
-  // Opções de pagamento reutilizam o mesmo aviso.
+  // Opções de pagamento aviso
   const avisoPagamento =
-    "O aplicativo não processa pagamentos online. Sua escolha será registrada apenas como preferência; o atendimento combinará os próximos passos.";
+    "O pedido será registado e integrado na sua conta da Bella Gestão.";
 
   return (
     <div className="pagamento-page">
@@ -268,7 +321,7 @@ function Pagamento({ setPagina }) {
 
                 <p className="card-details-description">
                   Preencha os campos para fins demonstrativos.
-                  Nenhuma cobrança será realizada.
+                  Nenhuma cobrança direta será realizada aqui.
                 </p>
 
                 <div className="card-field">
@@ -461,7 +514,7 @@ function Pagamento({ setPagina }) {
 
             <p className="order-footnote">
               O pedido será confirmado pelo atendimento.
-              Nenhuma cobrança será feita nesta tela.
+              Nenhuma cobrança sensível de cartão é armazenada.
             </p>
           </aside>
         </div>
