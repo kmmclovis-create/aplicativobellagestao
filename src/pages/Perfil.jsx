@@ -105,6 +105,23 @@ const handleSair = async () => {
       </section>
 
       <section className="acesso-rapido">
+
+        <div className="quick-card">
+          <button
+            className="card-rapido"
+            type="button"
+            onClick={() => setPagina("pedidos")}
+          >
+            <div className="icone-rapido">
+              <i className="fa-solid fa-truck-fast"></i>
+            </div>
+            <div>
+              <h3>Produtos</h3>
+              <p>Seus produtos comprados a caminho</p>
+            </div>
+          </button>
+        </div>
+        
         <div className="quick-card">
 
           <button
