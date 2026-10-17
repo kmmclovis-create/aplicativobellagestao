@@ -159,7 +159,7 @@ function Pedidos({ setPagina }) {
             {aba === "andamento" ? "Não tem nenhum pedido em trânsito no momento." : "Ainda não tem pedidos concluídos no histórico."}
           </p>
           <button
-            onClick={() => setPagina("Produtos")}
+            onClick={() => setPagina("produtos")}
             style={{ display: "flex", alignItems: "center", gap: ".8rem", padding: "1.2rem 1.8rem", borderRadius: "1rem", background: "var(--pink)", color: "#fff", fontSize: "1.4rem", border: "none", cursor: "pointer" }}
           >
             <i className="fa-solid fa-store"></i> Ir para a loja
