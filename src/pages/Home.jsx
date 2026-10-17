@@ -53,21 +53,25 @@ function Home({ setPagina }) {
     return () => {
       window.removeEventListener("hashchange", rolarParaSecao);
 
-      // 1. Destrói a instância ativa do Landbot
-      if (landbotInstance && typeof landbotInstance.destroy === "function") {
-        landbotInstance.destroy();
-      }
-      if (window.myLandbot && typeof window.myLandbot.destroy === "function") {
-        window.myLandbot.destroy();
-        window.myLandbot = null;
+      // Protege contra erros internos caso o Landbot ainda não tenha terminado de carregar
+      try {
+        if (landbotInstance && typeof landbotInstance.destroy === "function") {
+          landbotInstance.destroy();
+        }
+        if (window.myLandbot && typeof window.myLandbot.destroy === "function") {
+          window.myLandbot.destroy();
+          window.myLandbot = null;
+        }
+      } catch (e) {
+        console.warn("Aviso ao limpar o Landbot:", e);
       }
 
-      // 2. Remove o script do DOM
+      // Remove o script do DOM
       if (script.parentNode) {
         script.parentNode.removeChild(script);
       }
 
-      // 3. Remove quaisquer elementos visuais órfãos criados pelo Landbot no body
+      // Remove quaisquer elementos visuais órfãos criados pelo Landbot no body
       const landbotElements = document.querySelectorAll('.landbot-livechat, iframe[src*="landbot"]');
       landbotElements.forEach(el => el.remove());
     };
