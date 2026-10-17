@@ -7,6 +7,7 @@ function Perfil({ setPagina }) {
   const [nome, setNome] = useState("Nome do Usuário");
   const [email, setEmail] = useState("usuario@email.com");
   const [fotoPerfil, setFotoPerfil] = useState("perfil.png");
+  const [membroDesde, setMembroDesde] = useState("Membro recente");
 
   useEffect(() => {
     async function carregarPerfil() {
@@ -21,7 +22,16 @@ function Perfil({ setPagina }) {
         const user = session.user;
 
         if (user) {
-          // Busca primeiro da tabela "perfis" para priorizar a foto salva no banco[cite: 9]
+          // Formata a data de criação igual ao site ("Membro desde [mês] de [ano]")
+          if (user.created_at) {
+            const dataCriacao = new Date(user.created_at);
+            const mes = dataCriacao.toLocaleDateString('pt-BR', { month: 'long' });
+            const mesFormatado = mes.charAt(0).toUpperCase() + mes.slice(1);
+            const ano = dataCriacao.getFullYear();
+            setMembroDesde(`Membro desde ${mesFormatado} de ${ano}`);
+          }
+
+          // Busca primeiro da tabela "perfis" para priorizar a foto salva no banco
           const { data: perfilData } = await supabase
             .from("perfis")
             .select("nome, foto_url")
@@ -48,7 +58,7 @@ function Perfil({ setPagina }) {
     carregarPerfil();
   }, []);
 
-const handleSair = async () => {
+  const handleSair = async () => {
     try {
       const { error } = await supabase.auth.signOut();
       if (error) {
@@ -89,7 +99,7 @@ const handleSair = async () => {
           <p className="email-perfil">{email}</p>
           <p className="membro-desde">
             <i className="fa-regular fa-calendar"></i>
-            Membro recente
+            {membroDesde}
           </p>
         </div>
 
