@@ -556,25 +556,28 @@
 
 .continue-shopping {
   display: flex;
-
   align-items: center;
   justify-content: center;
-
   gap: 0.6rem;
-
+  width: 100%;
   margin-top: 1.8rem;
-
+  padding: 1.1rem 1.5rem;
+  border: 0.1rem solid var(--border);
+  border-radius: 0.7rem;
+  background: transparent;
   color: var(--gray);
-
   font-size: 1.3rem;
-
+  font-weight: 600;
+  cursor: pointer;
   transition: 0.3s;
 }
 
 .continue-shopping:hover {
-  color: var(--pink);
+  background: var(--light-pink);
+  color: var(--dark-pink);
+  border-color: var(--rose);
+  transform: translateY(-0.2rem);
 }
-
 
 
 /* =========================================================
