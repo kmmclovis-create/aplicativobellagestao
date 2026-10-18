@@ -326,6 +326,7 @@ const irParaLoja = () => setPagina("produtos");
               <div className="cart-selection-actions">
                 <button
                   type="button"
+                  className="btn-selection"
                   onClick={() =>
                     setCarrinho((atual) =>
                       atual.map((produto) => ({
@@ -340,6 +341,7 @@ const irParaLoja = () => setPagina("produtos");
 
                 <button
                   type="button"
+                  className="btn-selection btn-selection-outline"
                   onClick={() =>
                     setCarrinho((atual) =>
                       atual.map((produto) => ({
