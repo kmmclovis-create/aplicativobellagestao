@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { supabase } from "../supabase"; // Ajuste o caminho conforme a localização do seu ficheiro supabase.js
+import { supabase } from "../supabase";
 import "./Carrinho.css";
 
 function Carrinho({ setPagina }) {
@@ -17,11 +17,9 @@ function Carrinho({ setPagina }) {
         const { data: { user } } = await supabase.auth.getUser();
 
         if (!user) {
-          // Utilizador não logado: lê do sessionStorage
           const salvo = JSON.parse(sessionStorage.getItem("carrinho")) || [];
           setCarrinho(salvo);
         } else {
-          // Utilizador logado: busca da tabela carrinho_itens com join na tabela produtos
           const { data, error } = await supabase
             .from("carrinho_itens")
             .select(`
@@ -76,6 +74,55 @@ function Carrinho({ setPagina }) {
       style: "currency",
       currency: "BRL",
     });
+  };
+
+
+  // =========================================================
+  // ALTERAR SELEÇÃO INDIVIDUAL (CHECKBOX)
+  // =========================================================
+  const alterarSelecao = async (indice, selecionado) => {
+    const novoCarrinho = [...carrinho];
+    novoCarrinho[indice].selecionado = selecionado;
+    setCarrinho(novoCarrinho);
+
+    const { data: { user } } = await supabase.auth.getUser();
+    const itemAlvo = carrinho[indice];
+
+    if (!user) {
+      sessionStorage.setItem("carrinho", JSON.stringify(novoCarrinho));
+    } else if (itemAlvo.idCarrinho) {
+      await supabase
+        .from("carrinho_itens")
+        .update({ selecionado: selecionado })
+        .eq("id", itemAlvo.idCarrinho);
+    }
+  };
+
+
+  // =========================================================
+  // SELECIONAR TODOS OU LIMPAR SELEÇÃO
+  // =========================================================
+  const alterarSelecaoTodos = async (estado) => {
+    const novoCarrinho = carrinho.map((produto) => ({
+      ...produto,
+      selecionado: estado,
+    }));
+    setCarrinho(novoCarrinho);
+
+    const { data: { user } } = await supabase.auth.getUser();
+
+    if (!user) {
+      sessionStorage.setItem("carrinho", JSON.stringify(novoCarrinho));
+    } else {
+      for (const item of novoCarrinho) {
+        if (item.idCarrinho) {
+          await supabase
+            .from("carrinho_itens")
+            .update({ selecionado: estado })
+            .eq("id", item.idCarrinho);
+        }
+      }
+    }
   };
 
 
@@ -164,7 +211,7 @@ function Carrinho({ setPagina }) {
   }, 0);
 
 
- // =========================================================
+  // =========================================================
   // FINALIZAR PEDIDO (DIRECIONA PARA O PAGAMENTO)
   // =========================================================
   const finalizarPedido = () => {
@@ -175,20 +222,14 @@ function Carrinho({ setPagina }) {
       return;
     }
 
-    // Guarda os itens selecionados no sessionStorage para a página de pagamento ler
     sessionStorage.setItem("itensSelecionados", JSON.stringify(itensSelecionados));
     
-    // Altera a página ativa no componente principal (App.jsx) para o componente de pagamento
     if (setPagina) {
       setPagina("pagamento");
     }
   };
 
-
-  // =========================================================
-  // IR PARA A LOJA
-  // =========================================================
-const irParaLoja = () => setPagina("produtos");
+  const irParaLoja = () => setPagina("produtos");
 
 
   if (carregando) {
@@ -243,7 +284,18 @@ const irParaLoja = () => setPagina("produtos");
                   const subtotal = preco * quantidade;
 
                   return (
-                    <article className="cart-item" key={produto.id || indice}>
+                    <article className={`cart-item ${produto.selecionado === false ? "is-unselected" : ""}`} key={produto.id || indice}>
+                      
+                      {/* CHECKBOX DE SELEÇÃO INDIVIDUAL */}
+                      <label className="cart-select" title="Selecionar produto">
+                        <input
+                          type="checkbox"
+                          checked={produto.selecionado !== false}
+                          onChange={(e) => alterarSelecao(indice, e.target.checked)}
+                          aria-label={`Selecionar ${produto.nome}`}
+                        />
+                      </label>
+
                       {/* IMAGEM */}
                       <img
                         src={produto.imagem || ""}
@@ -327,14 +379,7 @@ const irParaLoja = () => setPagina("produtos");
                 <button
                   type="button"
                   className="btn-selection"
-                  onClick={() =>
-                    setCarrinho((atual) =>
-                      atual.map((produto) => ({
-                        ...produto,
-                        selecionado: true,
-                      }))
-                    )
-                  }
+                  onClick={() => alterarSelecaoTodos(true)}
                 >
                   Selecionar todos
                 </button>
@@ -342,14 +387,7 @@ const irParaLoja = () => setPagina("produtos");
                 <button
                   type="button"
                   className="btn-selection btn-selection-outline"
-                  onClick={() =>
-                    setCarrinho((atual) =>
-                      atual.map((produto) => ({
-                        ...produto,
-                        selecionado: false,
-                      }))
-                    )
-                  }
+                  onClick={() => alterarSelecaoTodos(false)}
                 >
                   Limpar seleção
                 </button>
@@ -382,12 +420,11 @@ const irParaLoja = () => setPagina("produtos");
             <button
               className="checkout"
               type="button"
-              disabled={carrinho.length === 0}
+              disabled={carrinho.length === 0 || carrinho.every(p => p.selecionado === false)}
               onClick={finalizarPedido}
             >
               ✓ Fazer Pedido
             </button>
-
             
             <button
               type="button"
