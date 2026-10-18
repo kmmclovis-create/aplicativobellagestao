@@ -923,3 +923,48 @@
   }
 
 }
+
+
+/* =========================================================
+   BOTÕES DE SELEÇÃO (SELECIONAR / LIMPAR)
+========================================================= */
+
+.cart-selection-actions {
+  display: flex;
+  gap: 1.2rem;
+  margin-top: 2rem;
+  padding-top: 2rem;
+  border-top: 0.1rem solid var(--border);
+}
+
+.btn-selection {
+  padding: 0.9rem 1.6rem;
+  border-radius: 0.7rem;
+  font-size: 1.3rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.3s;
+  border: 0.1rem solid var(--pink);
+  background: var(--pink);
+  color: var(--white);
+}
+
+.btn-selection:hover {
+  background: var(--dark-pink);
+  border-color: var(--dark-pink);
+  transform: translateY(-0.2rem);
+}
+
+/* Versão secundária para o botão "Limpar seleção" */
+.btn-selection-outline {
+  background: transparent;
+  color: var(--dark);
+  border-color: var(--border);
+}
+
+.btn-selection-outline:hover {
+  background: var(--light-pink);
+  color: var(--dark-pink);
+  border-color: var(--rose);
+  transform: translateY(-0.2rem);
+}
