@@ -971,3 +971,31 @@
   border-color: var(--rose);
   transform: translateY(-0.2rem);
 }
+
+
+/* =========================================================
+   CHECKBOX DE SELEÇÃO INDIVIDUAL
+========================================================= */
+
+.cart-select {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.cart-select input[type="checkbox"] {
+  width: 1.8rem;
+  height: 1.8rem;
+  accent-color: var(--pink); /* Aplica a cor rosa padrão do tema */
+  cursor: pointer;
+  border-radius: 0.4rem;
+  border: 0.1rem solid var(--border);
+  transition: 0.2s;
+}
+
+/* Efeito visual opcional para itens desmarcados */
+.cart-item.is-unselected {
+  opacity: 0.6;
+  transition: opacity 0.3s ease;
+}
