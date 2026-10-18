@@ -145,13 +145,13 @@
 }
 
 /* =========================================================
-   ITEM (DESKTOP)
+   ITEM DO CARRINHO (DESKTOP)
 ========================================================= */
 
 .cart-item {
   display: grid;
-  /* Coluna 1: Checkbox | Coluna 2: Imagem | Coluna 3: Info | Coluna 4: Preço | Coluna 5: Qtd | Coluna 6: Remover */
-  grid-template-columns: 3rem 11rem minmax(0, 1fr) auto auto auto;
+  /* 6 colunas precisas: 1. Checkbox | 2. Imagem | 3. Info | 4. Preço | 5. Qtd | 6. Remover */
+  grid-template-columns: 4rem 10rem minmax(0, 1fr) auto auto auto;
   align-items: center;
   gap: 2rem;
   padding: 2rem 0;
@@ -162,7 +162,7 @@
   border-bottom: none;
 }
 
-/* Checkbox */
+/* Estilo do Checkbox */
 .cart-select {
   display: flex;
   align-items: center;
@@ -171,8 +171,8 @@
 }
 
 .cart-select input[type="checkbox"] {
-  width: 1.8rem;
-  height: 1.8rem;
+  width: 2rem;
+  height: 2rem;
   accent-color: var(--pink);
   cursor: pointer;
   border-radius: 0.4rem;
@@ -185,8 +185,8 @@
 }
 
 .cart-item img {
-  width: 11rem;
-  height: 11rem;
+  width: 10rem;
+  height: 10rem;
   object-fit: cover;
   border-radius: 1rem;
   background: var(--nude);
@@ -496,7 +496,7 @@
 }
 
 /* =========================================================
-   RESPONSIVIDADE
+   RESPONSIVIDADE (TABLET / ECRÃS MÉDIOS)
 ========================================================= */
 
 @media (max-width: 1100px) {
@@ -509,7 +509,12 @@
   }
 
   .cart-item {
-    grid-template-columns: 2.5rem 10rem minmax(0, 1fr) auto;
+    grid-template-columns: 3.5rem 9rem minmax(0, 1fr) auto;
+  }
+
+  .cart-select {
+    grid-column: 1;
+    grid-row: 1 / span 3;
   }
 
   .item-price {
@@ -547,7 +552,7 @@
   }
 
   .cart-item {
-    grid-template-columns: 2.5rem 8rem minmax(0, 1fr) auto;
+    grid-template-columns: 3rem 8rem minmax(0, 1fr) auto;
     gap: 1.2rem;
   }
 
@@ -558,13 +563,12 @@
 }
 
 /* =========================================================
-   CORREÇÃO DO CARRINHO NO TELEMÓVEL (COM CHECKBOX)
+   CORREÇÃO DO CARRINHO NO TELEMÓVEL
 ========================================================= */
 
 @media (max-width: 600px) {
   .cart-item {
     display: grid;
-    /* Coluna 1: Checkbox | Coluna 2: Imagem | Coluna 3: Info | Coluna 4: Remover */
     grid-template-columns: 28px 75px minmax(0, 1fr) 30px;
     grid-template-rows: auto auto auto;
     gap: 10px;
@@ -660,44 +664,5 @@
   .quantity {
     width: 35px;
     height: 32px;
-  }
-}
-
-/* =========================================================
-   CELULAR PEQUENO
-========================================================= */
-
-@media (max-width: 400px) {
-  .cart-item {
-    grid-template-columns: 24px 65px minmax(0, 1fr) 28px;
-    gap: 9px;
-    padding: 12px;
-  }
-
-  .cart-item > img {
-    width: 65px;
-    height: 80px;
-  }
-
-  .item-info h3 {
-    font-size: 13px;
-    line-height: 1.3;
-  }
-
-  .item-info p {
-    font-size: 10px;
-    line-height: 1.35;
-  }
-
-  .item-price {
-    min-width: 85px;
-    padding: 6px 8px;
-    font-size: 12px;
-  }
-
-  .remove-item {
-    width: 26px;
-    height: 26px;
-    font-size: 18px;
   }
 }
