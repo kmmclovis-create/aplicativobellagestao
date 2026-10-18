@@ -145,13 +145,13 @@
 }
 
 /* =========================================================
-   ITEM DO CARRINHO (DESKTOP E TABLET LARGO)
+   ITEM DO CARRINHO (DESKTOP)
 ========================================================= */
 
 .cart-item {
   display: grid;
-  /* 6 colunas exatas para os 6 elementos do JSX: Checkbox | Imagem | Info | Preço | Quantidade | Remover */
-  grid-template-columns: 3rem 10rem minmax(0, 1fr) auto auto auto;
+  /* 6 colunas protegidas: Checkbox | Imagem | Info (com min-width garantido) | Preço | Qtd | Remover */
+  grid-template-columns: 3.5rem 10rem minmax(220px, 1fr) auto auto auto;
   align-items: center;
   gap: 2rem;
   padding: 2rem 0;
@@ -209,6 +209,7 @@
 .item-info h3 {
   font-size: 1.8rem;
   font-weight: 500;
+  word-break: break-word;
 }
 
 .item-info p {
@@ -506,62 +507,6 @@
 
   .summary {
     position: static;
-  }
-}
-
-@media (max-width: 750px) {
-  .carrinho-hero {
-    padding: 12rem 5% 5rem;
-  }
-
-  .carrinho-hero h1 {
-    font-size: 4rem;
-  }
-
-  .carrinho-content {
-    padding: 5rem 5% 6rem;
-  }
-
-  .cart-items,
-  .summary {
-    padding: 2rem;
-  }
-
-  .cart-item {
-    grid-template-columns: 3rem 8rem minmax(0, 1fr) auto;
-    gap: 1.2rem;
-  }
-
-  .cart-select {
-    grid-column: 1;
-    grid-row: 1 / span 3;
-  }
-
-  .cart-item img {
-    grid-column: 2;
-    grid-row: 1 / span 3;
-    width: 8rem;
-    height: 8rem;
-  }
-
-  .item-info {
-    grid-column: 3;
-    grid-row: 1 / span 3;
-  }
-
-  .item-price {
-    grid-column: 4;
-    grid-row: 1;
-  }
-
-  .quantity-wrap {
-    grid-column: 4;
-    grid-row: 2;
-  }
-
-  .remove-item {
-    grid-column: 4;
-    grid-row: 3;
   }
 }
 
