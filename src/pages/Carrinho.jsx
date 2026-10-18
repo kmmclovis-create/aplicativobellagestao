@@ -313,7 +313,7 @@ const irParaLoja = () => setPagina("produtos");
                 <button
                   type="button"
                   className="btn-voltar-loja"
-                  onClick={voltarParaLoja}
+                  onClick={irParaLoja}
                 >
                   <span>▣</span>
                   Ir para a loja
