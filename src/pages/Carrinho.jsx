@@ -188,11 +188,7 @@ function Carrinho({ setPagina }) {
   // =========================================================
   // IR PARA A LOJA
   // =========================================================
-  const voltarParaLoja = () => {
-    if (setPagina) {
-      setPagina("produtos");
-    }
-  };
+const irParaLoja = () => setPagina("produtos");
 
 
   if (carregando) {
@@ -324,6 +320,39 @@ function Carrinho({ setPagina }) {
                 </button>
               </div>
             )}
+
+            {/* Seleciona todos os produtos ou desmarca todos */}
+            {carrinho.length > 0 && (
+              <div className="cart-selection-actions">
+                <button
+                  type="button"
+                  onClick={() =>
+                    setCarrinho((atual) =>
+                      atual.map((produto) => ({
+                        ...produto,
+                        selecionado: true,
+                      }))
+                    )
+                  }
+                >
+                  Selecionar todos
+                </button>
+
+                <button
+                  type="button"
+                  onClick={() =>
+                    setCarrinho((atual) =>
+                      atual.map((produto) => ({
+                        ...produto,
+                        selecionado: false,
+                      }))
+                    )
+                  }
+                >
+                  Limpar seleção
+                </button>
+              </div>
+            )}
           </section>
 
           {/* RESUMO */}
@@ -357,10 +386,11 @@ function Carrinho({ setPagina }) {
               ✓ Fazer Pedido
             </button>
 
+            
             <button
               type="button"
               className="continue-shopping"
-              onClick={voltarParaLoja}
+              onClick={irParaLoja}
             >
               ← Continuar comprando
             </button>
