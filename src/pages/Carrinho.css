@@ -632,88 +632,91 @@
     word-break: normal;
   }
 
-  /* Correção principal da descrição no celular */
-  .item-info p {
-    display: block;
-    width: 100%;
-    min-width: 0;
-    max-width: 100%;
-    margin-top: 0.6rem;
-    font-size: 1.3rem;
-    line-height: 1.5;
-    white-space: normal;
-    overflow-wrap: anywhere;
-    word-break: normal;
-    box-sizing: border-box;
-  }
-
-  .remove-item {
-    grid-column: 4;
-    grid-row: 1;
-    justify-self: end;
-    width: 2.8rem;
-    height: 2.8rem;
-    font-size: 2rem;
-  }
-
-  .item-price {
-    grid-column: 3;
-    grid-row: 2;
-    justify-self: start;
-    margin-top: 0.5rem;
-    font-size: 1.3rem;
-  }
-
-  .quantity-wrap {
-    grid-column: 2 / span 2;
-    grid-row: 3;
-    justify-self: start;
-    width: fit-content;
-    max-width: 100%;
-    gap: 0.6rem;
-    padding: 0.3rem;
-    margin-top: 0.3rem;
-    box-sizing: border-box;
-  }
-
-  .quantity-btn {
-    width: 2.8rem;
-    height: 2.8rem;
-  }
-
-  .quantity {
-    width: 3.2rem;
-  }
-
-  .summary {
-    padding: 2rem;
-  }
-
-  .summary h3 {
-    font-size: 2rem;
-  }
-
-  .summary-line {
-    font-size: 1.3rem;
-  }
-
-  .summary-total {
-    gap: 1rem;
-    font-size: 1.4rem;
-  }
-
-  .summary-total strong {
-    font-size: 1.8rem;
-  }
-
-  .cart-selection-actions {
-    flex-direction: column;
-  }
-
-  .btn-selection {
-    width: 100%;
-  }
+ 
+/* Correção da descrição no celular */
+.item-info p {
+  display: block;
+  position: static;
+  width: 100%;
+  max-width: 100%;
+  margin: 8px 0 0;
+  padding: 0;
+  font-size: 12px;
+  line-height: 1.5;
+  color: var(--gray);
+  white-space: normal;
+  overflow-wrap: anywhere;
+  word-break: normal;
+  box-sizing: border-box;
 }
+
+.remove-item {
+  grid-column: 4;
+  grid-row: 1;
+  justify-self: end;
+  width: 2.8rem;
+  height: 2.8rem;
+  font-size: 2rem;
+}
+
+.item-price {
+  grid-column: 3;
+  grid-row: 2;
+  justify-self: start;
+  margin-top: 4px;
+  font-size: 1.3rem;
+}
+
+.quantity-wrap {
+  grid-column: 2 / span 2;
+  grid-row: 3;
+  justify-self: start;
+  width: fit-content;
+  max-width: 100%;
+  gap: 0.6rem;
+  padding: 0.3rem;
+  margin-top: 0.3rem;
+  box-sizing: border-box;
+}
+
+.quantity-btn {
+  width: 2.8rem;
+  height: 2.8rem;
+}
+
+.quantity {
+  width: 3.2rem;
+}
+
+.summary {
+  padding: 2rem;
+}
+
+.summary h3 {
+  font-size: 2rem;
+}
+
+.summary-line {
+  font-size: 1.3rem;
+}
+
+.summary-total {
+  gap: 1rem;
+  font-size: 1.4rem;
+}
+
+.summary-total strong {
+  font-size: 1.8rem;
+}
+
+.cart-selection-actions {
+  flex-direction: column;
+}
+
+.btn-selection {
+  width: 100%;
+}
+
 
 /* =========================================================
    CELULARES MUITO ESTREITOS
