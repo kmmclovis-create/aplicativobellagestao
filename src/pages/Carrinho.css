@@ -1541,11 +1541,10 @@
 }
 
 @media (max-width: 600px) {
-  .carrinho-container {
-    outline: 2px solid red !important;
-  }
-
   .summary {
-    outline: 2px solid blue !important;
+    background: #ffe1e8 !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    transform: translateX(0) !important;
   }
 }
