@@ -771,11 +771,12 @@
     box-sizing: border-box;
   }
 
- .summary {
-  width: auto;
+.summary {
+  width: calc(100% - 2rem);
   min-width: 0;
-  margin: 0;
-  justify-self: stretch;
+  margin-left: auto;
+  margin-right: auto;
+  justify-self: center;
   box-sizing: border-box;
   position: static;
 }
