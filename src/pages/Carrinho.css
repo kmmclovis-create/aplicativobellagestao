@@ -569,10 +569,14 @@
     }
 
     .quantity-wrap {
-      grid-column: 2 / span 2;
-      grid-row: 3;
-      margin-top: 3px;
-    }
+        grid-column: 2 / span 2;
+        grid-row: 3;
+        justify-self: start;
+        width: fit-content;
+        gap: 0.6rem;
+        padding: 0.3rem;
+        margin-top: 3px;
+      }
 }
 
 
@@ -632,32 +636,4 @@
   }
 }
 
-/* Corrige somente a caixa de quantidade no celular */
-@media (max-width: 600px) {
-  .quantity-wrap {
-    grid-column: 2 / span 2;
-    grid-row: 3;
-    justify-self: start;
-    display: inline-flex;
-    width: max-content;
-    min-width: max-content;
-    flex: none;
-    gap: 0.6rem;
-    padding: 0.3rem;
-    margin-top: 3px;
-    align-items: center;
-  }
 
-  .quantity-wrap .quantity-btn {
-    flex: none;
-    width: 2.8rem;
-    min-width: 2.8rem;
-    height: 2.8rem;
-  }
-
-  .quantity-wrap .quantity {
-    flex: none;
-    width: 3.2rem;
-    min-width: 3.2rem;
-  }
-}
