@@ -1539,3 +1539,13 @@
   transform: none;
 }
 }
+
+@media (max-width: 600px) {
+  .carrinho-container {
+    outline: 2px solid red !important;
+  }
+
+  .summary {
+    outline: 2px solid blue !important;
+  }
+}
