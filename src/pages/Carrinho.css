@@ -574,3 +574,88 @@
       margin-top: 3px;
     }
 }
+
+
+/* =========================================================
+   CORREÇÃO DAS INFORMAÇÕES DO PRODUTO NO CELULAR
+   Objetivo: evitar que o nome e a descrição fiquem espremidos.
+========================================================= */
+
+@media (max-width: 600px) {
+
+  /* Reduz o espaço interno do cartão para liberar
+     mais largura para o conteúdo do produto. */
+  .cart-items {
+    padding: 15px;
+  }
+
+  /* Reorganiza as colunas para reservar espaço suficiente
+     para o checkbox, a imagem, o texto e o botão de remover. */
+  .cart-item {
+    grid-template-columns: 22px 70px minmax(0, 1fr) 24px;
+    gap: 8px;
+    padding: 14px 0;
+    align-items: start;
+  }
+
+  /* Mantém a imagem em tamanho definido, sem distorção. */
+  .cart-item > img {
+    grid-column: 2;
+    grid-row: 1 / span 2;
+    width: 70px;
+    height: 85px;
+    object-fit: contain;
+  }
+
+  /* Permite que a área de informações use todo o espaço
+     disponível na terceira coluna. */
+  .item-info {
+    grid-column: 3;
+    grid-row: 1;
+    width: 100%;
+    min-width: 0;
+    overflow-wrap: normal;
+  }
+
+  /* Mantém o nome do produto legível e permite que ele
+     ocupe várias linhas sem quebrar palavras à toa. */
+  .item-info h3 {
+    font-size: 14px;
+    line-height: 1.4;
+    font-weight: 500;
+    overflow-wrap: break-word;
+    word-break: normal;
+    white-space: normal;
+  }
+
+  /* Mantém a categoria em tamanho fixo no celular. */
+  .item-category {
+    font-size: 11px;
+    line-height: 1.4;
+    letter-spacing: 1px;
+  }
+
+  /* Evita que a descrição fique excessivamente estreita
+     e mantém um espaçamento confortável entre as linhas. */
+  .item-info p {
+    width: 100%;
+    max-width: 100%;
+    margin-top: 6px;
+    font-size: 13px;
+    line-height: 1.5;
+    overflow-wrap: break-word;
+    word-break: normal;
+    white-space: normal;
+  }
+
+  /* Mantém o botão de remover na última coluna. */
+  .remove-item {
+    grid-column: 4;
+    grid-row: 1;
+    justify-self: end;
+    width: 24px;
+    height: 30px;
+    font-size: 22px;
+  }
+}
+
