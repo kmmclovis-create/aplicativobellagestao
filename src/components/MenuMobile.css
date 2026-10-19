@@ -33,17 +33,22 @@
    OPÇÕES
 ========================================================= */
 
+
+/* =========================================================
+   OPÇÕES
+========================================================= */
+
 .menu-mobile a {
   display: flex;
   align-items: center;
   gap: 0.8rem;
 
-  padding: 0.9rem 1.5rem;
+  padding: 1rem 1.5rem;
 
   color: #3d3034;
   text-decoration: none;
 
-  font-size: 1.3rem;
+  font-size: 1.5rem;
   line-height: 1.4;
 
   border-bottom: 1px solid #e9dddf;
