@@ -1540,11 +1540,12 @@
 }
 }
 
+/* Centraliza a caixinha de quantidade no celular */
 @media (max-width: 600px) {
-  .summary {
-    background: #ffe1e8 !important;
-    margin-left: 0 !important;
-    margin-right: 0 !important;
-    transform: translateX(0) !important;
+  .quantity-wrap {
+    grid-column: 2 / span 2;
+    justify-self: center;
+    margin-left: 0;
+    margin-right: 0;
   }
 }
