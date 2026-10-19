@@ -1,8 +1,8 @@
+
 /* =========================================================
    VARIÁVEIS
 ========================================================= */
 
-/* Cores reutilizadas no carrinho para manter a identidade visual da Bella Gestão. */
 :root {
   --pink: #c98291;
   --dark-pink: #a95f70;
@@ -17,27 +17,27 @@
   --border: #e9dddf;
 }
 
-/* Área geral da página: define altura mínima, fundo e cor padrão do texto. */
+/* =========================================================
+   ESTRUTURA GERAL
+========================================================= */
+
 .carrinho-page-wrapper {
   min-height: 100vh;
   background: var(--cream);
   color: var(--dark);
 }
 
-/* Cabeçalho/introdução da página do carrinho. */
 .carrinho-hero {
   padding: 14rem 9% 6rem;
   background: linear-gradient(135deg, var(--light-pink), var(--cream));
   text-align: center;
 }
 
-/* Limita a largura do texto introdutório e centraliza o bloco. */
 .carrinho-intro {
   max-width: 70rem;
   margin: auto;
 }
 
-/* Pequeno rótulo decorativo usado nas seções. */
 .section-label {
   color: var(--gold);
   font-size: 1.2rem;
@@ -45,24 +45,21 @@
   letter-spacing: 0.3rem;
 }
 
-/* Título principal da página. */
 .carrinho-hero h1 {
   margin-top: 1rem;
   margin-bottom: 1.5rem;
   font-family: Georgia, "Times New Roman", serif;
   font-size: 4.8rem;
   font-style: italic;
-    font-weight: 400;
-    line-height: 1.2;
+  font-weight: 400;
+  line-height: 1.2;
 }
 
-/* Destaca uma parte do título com a cor rosa. */
 .carrinho-hero h1 span {
   color: var(--pink);
   font-weight: 600;
 }
 
-/* Texto de apoio abaixo do título principal. */
 .carrinho-hero p {
   margin-top: 1.5rem;
   font-size: 1.6rem;
@@ -70,12 +67,10 @@
   color: var(--gray);
 }
 
-/* Espaçamento ao redor do conteúdo principal do carrinho. */
 .carrinho-content {
   padding: 6rem 9% 8rem;
 }
 
-/* Organiza a lista de produtos e o resumo do pedido em colunas. */
 .carrinho-container {
   width: 100%;
   max-width: 120rem;
@@ -86,39 +81,34 @@
   align-items: start;
 }
 
-/* Aparência compartilhada entre a lista de produtos e o resumo do pedido. */
 .cart-items,
-/* Caixa do resumo do pedido; fica fixa durante a rolagem em telas grandes. */
 .summary {
+  min-width: 0;
   background: var(--white);
   border: 0.1rem solid var(--border);
   border-radius: 1.2rem;
   box-shadow: 0 0.5rem 2rem rgba(61, 48, 52, 0.05);
 }
 
-/* Espaçamento interno da caixa que contém os produtos. */
 .cart-items {
   padding: 3rem;
 }
 
-/* Alinha o título da lista e a quantidade de itens. */
 .cart-title {
   display: flex;
   align-items: end;
   justify-content: space-between;
   gap: 2rem;
   padding-bottom: 2rem;
-    border-bottom: 0.1rem solid var(--border);
+  border-bottom: 0.1rem solid var(--border);
 }
 
-/* Estilo do título "Itens no Carrinho". */
 .cart-title h2 {
   margin-top: 0.8rem;
   font-size: 2.6rem;
   font-weight: 500;
 }
 
-/* Texto que informa quantos itens estão no carrinho. */
 .cart-total-items {
   color: var(--gray);
   font-size: 1.3rem;
@@ -126,26 +116,26 @@
 }
 
 /* =========================================================
-   ITEM DO CARRINHO (DESKTOP - 6 COLUNAS EXATAS)
+   ITEM DO CARRINHO — DESKTOP
 ========================================================= */
 
-/* Cada produto: organiza checkbox, imagem, informações, preço, quantidade e remoção. */
 .cart-item {
   display: grid;
   grid-template-columns: 3rem 11rem minmax(0, 1fr) auto auto auto;
   align-items: center;
   gap: 2rem;
+  min-width: 0;
   padding: 2rem 0;
   border-bottom: 0.1rem solid var(--border);
+  box-sizing: border-box;
 }
 
-/* Remove a linha inferior do último produto da lista. */
 .cart-item:last-child {
   border-bottom: none;
 }
 
-/* Estilo do Checkbox */
-/* Centraliza o checkbox usado para selecionar um produto. */
+/* Checkbox */
+
 .cart-select {
   display: flex;
   align-items: center;
@@ -153,7 +143,6 @@
   cursor: pointer;
 }
 
-/* Aparência e tamanho do checkbox de seleção. */
 .cart-select input[type="checkbox"] {
   width: 1.8rem;
   height: 1.8rem;
@@ -162,28 +151,40 @@
   border-radius: 0.4rem;
   border: 0.1rem solid var(--border);
 }
-/* Deixa menos destacado um produto que não está selecionado. */
+
 .cart-item.is-unselected {
   opacity: 0.5;
   transition: opacity 0.3s ease;
 }
 
-/* Tamanho e enquadramento da imagem de cada produto. */
-.cart-item img {
+/* Imagem do produto */
+
+.cart-item > img {
+  display: block;
   width: 10rem;
   height: 10rem;
   object-fit: cover;
   border-radius: 1rem;
   background: var(--nude);
+  max-width: 100%;
+  box-sizing: border-box;
 }
 
-/* Informações gerais do produto: permite que o conteúdo se ajuste à largura disponível. */
+/* =========================================================
+   INFORMAÇÕES E DESCRIÇÃO DO PRODUTO
+========================================================= */
+
+/* Permite que a coluna de informações encolha dentro do grid. */
 .item-info {
+  display: block;
+  width: 100%;
   min-width: 0;
-  overflow-wrap: break-word;
+  max-width: 100%;
+  box-sizing: border-box;
 }
 
-/* Categoria do produto, como CABELOS ou SKINCARE. */
+/* Categoria */
+
 .item-category {
   display: block;
   margin-bottom: 0.6rem;
@@ -192,45 +193,55 @@
   font-weight: bold;
   letter-spacing: 0.1rem;
   text-transform: uppercase;
+  overflow-wrap: anywhere;
 }
 
-/* Nome do produto: mantém a leitura organizada e quebra palavras muito longas se necessário. */
+/* Nome do produto */
+
 .item-info h3 {
+  max-width: 100%;
+  margin: 0;
   font-size: 1.8rem;
   font-weight: 500;
   line-height: 1.3;
   overflow-wrap: anywhere;
+  word-break: normal;
 }
 
-/* Descrição do produto: controla espaçamento, cor, tamanho e quebra das linhas. */
+/* Descrição: quebra o texto sem ultrapassar a coluna. */
 .item-info p {
-  margin-top: 0.8rem;
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  margin: 0.8rem 0 0;
   color: var(--gray);
   font-size: 1.3rem;
   line-height: 1.6;
-  overflow-wrap: break-word;
-  word-break: normal;
   white-space: normal;
+  overflow-wrap: anywhere;
+  word-break: normal;
+  box-sizing: border-box;
 }
 
-/* Estilo do preço do produto. */
+/* =========================================================
+   PREÇO E QUANTIDADE
+========================================================= */
+
 .item-price {
   font-size: 1.6rem;
   font-weight: 600;
   white-space: nowrap;
 }
 
-/* Agrupa os controles de diminuir, mostrar e aumentar a quantidade. */
 .quantity-wrap {
- display: flex;
-    align-items: center;
-    gap: 0.6rem;
-    border: 0.1rem solid var(--border);
-    border-radius: 0.8rem;
-    padding: 0.3rem;
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  border: 0.1rem solid var(--border);
+  border-radius: 0.8rem;
+  padding: 0.3rem;
 }
 
-/* Botões de aumentar e diminuir a quantidade. */
 .quantity-btn {
   width: 2.8rem;
   height: 2.8rem;
@@ -242,13 +253,11 @@
   transition: 0.2s;
 }
 
-/* Efeito visual ao passar o cursor pelos botões de quantidade. */
 .quantity-btn:hover {
   background: var(--light-pink);
   color: var(--pink);
 }
 
-/* Campo que mostra a quantidade atual do produto. */
 .quantity {
   width: 3.2rem;
   border: none;
@@ -259,14 +268,16 @@
   font-size: 1.3rem;
 }
 
-/* Esconde as setas nativas do campo numérico em navegadores WebKit. */
 .quantity::-webkit-outer-spin-button,
 .quantity::-webkit-inner-spin-button {
   appearance: none;
   margin: 0;
 }
 
-/* Botão para remover o produto do carrinho. */
+/* =========================================================
+   REMOVER PRODUTO
+========================================================= */
+
 .remove-item {
   width: 3.6rem;
   height: 3.6rem;
@@ -276,25 +287,26 @@
   border: none;
   border-radius: 50%;
   background: transparent;
-    color: #a99da0;
-    cursor: pointer;
-    font-size: 2.2rem;
-    transition: 0.3s;
+  color: #a99da0;
+  cursor: pointer;
+  font-size: 2.2rem;
+  transition: 0.3s;
 }
 
-/* Efeito visual do botão de remover ao passar o cursor. */
 .remove-item:hover {
   background: var(--light-pink);
   color: var(--dark-pink);
 }
 
-/* Layout exibido quando o carrinho não possui produtos. */
+/* =========================================================
+   CARRINHO VAZIO
+========================================================= */
+
 .empty-cart {
   padding: 6rem 2rem 4rem;
   text-align: center;
 }
 
-/* Ícone decorativo do carrinho vazio. */
 .empty-cart-icon {
   display: block;
   margin-bottom: 1.5rem;
@@ -302,20 +314,17 @@
   font-size: 3rem;
 }
 
-/* Título da mensagem de carrinho vazio. */
 .empty-cart h3 {
   font-size: 2rem;
   font-weight: 500;
 }
 
-/* Texto explicativo da mensagem de carrinho vazio. */
 .empty-cart p {
   margin-top: 1rem;
   color: var(--gray);
   font-size: 1.4rem;
 }
 
-/* Botão para voltar à loja quando o carrinho estiver vazio. */
 .btn-voltar-loja {
   display: inline-flex;
   align-items: center;
@@ -329,11 +338,14 @@
   transition: 0.3s;
 }
 
-/* Efeito visual do botão de voltar à loja. */
 .btn-voltar-loja:hover {
-    background: var(--dark-pink);
-    transform: translateY(-0.2rem);
+  background: var(--dark-pink);
+  transform: translateY(-0.2rem);
 }
+
+/* =========================================================
+   RESUMO DO PEDIDO
+========================================================= */
 
 .summary {
   position: sticky;
@@ -341,7 +353,6 @@
   padding: 3rem;
 }
 
-/* Título do resumo do pedido. */
 .summary h3 {
   margin-top: 0.8rem;
   margin-bottom: 2.5rem;
@@ -349,9 +360,7 @@
   font-weight: 500;
 }
 
-/* Alinha rótulos e valores nas linhas do resumo. */
 .summary-line,
-/* Linha que apresenta o valor total do pedido. */
 .summary-total {
   display: flex;
   align-items: center;
@@ -359,20 +368,17 @@
   gap: 2rem;
 }
 
-/* Linhas de subtotal e frete no resumo. */
 .summary-line {
   margin-bottom: 1.5rem;
   color: var(--gray);
   font-size: 1.4rem;
 }
 
-/* Destaca a informação de frete grátis. */
 .free-shipping {
   color: var(--pink);
   font-weight: 600;
 }
 
-/* Linha divisória entre valores e total. */
 .summary-divider {
   height: 0.1rem;
   margin: 2rem 0;
@@ -384,13 +390,13 @@
   font-size: 1.6rem;
 }
 
-/* Destaca o valor numérico do total. */
 .summary-total strong {
-    color: var(--pink);
-    font-size: 2.1rem;
+  color: var(--pink);
+  font-size: 2.1rem;
 }
 
-/* Botão para prosseguir para a finalização do pedido. */
+/* Botão Fazer Pedido */
+
 .checkout {
   width: 100%;
   margin-top: 2.5rem;
@@ -409,20 +415,19 @@
   transition: 0.3s;
 }
 
-/* Efeito visual do botão de finalização. */
 .checkout:hover {
   background: var(--dark-pink);
   transform: translateY(-0.2rem);
 }
 
-/* Aparência do botão quando a finalização está desabilitada. */
 .checkout:disabled {
   background: #d8c9cc;
   cursor: not-allowed;
   transform: none;
 }
 
-/* Botão para continuar comprando na loja. */
+/* Botão Continuar comprando */
+
 .continue-shopping {
   display: flex;
   align-items: center;
@@ -438,10 +443,9 @@
   font-size: 1.3rem;
   font-weight: 600;
   cursor: pointer;
-    transition: 0.3s;
+  transition: 0.3s;
 }
 
-/* Efeito visual do botão continuar comprando. */
 .continue-shopping:hover {
   background: var(--light-pink);
   color: var(--dark-pink);
@@ -449,16 +453,19 @@
   transform: translateY(-0.2rem);
 }
 
-/* Área dos botões de ações em lote para os produtos selecionados. */
+/* =========================================================
+   AÇÕES DE SELEÇÃO
+========================================================= */
+
 .cart-selection-actions {
   display: flex;
+  flex-wrap: wrap;
   gap: 1.2rem;
   margin-top: 2rem;
   padding-top: 2rem;
   border-top: 0.1rem solid var(--border);
 }
 
-/* Estilo principal dos botões de seleção em lote. */
 .btn-selection {
   padding: 0.9rem 1.6rem;
   border-radius: 0.7rem;
@@ -471,161 +478,273 @@
   color: var(--white);
 }
 
-/* Efeito visual dos botões de seleção em lote. */
 .btn-selection:hover {
   background: var(--dark-pink);
   border-color: var(--dark-pink);
   transform: translateY(-0.2rem);
 }
 
-/* Variante secundária/contornada do botão de seleção. */
 .btn-selection-outline {
   background: transparent;
   color: var(--dark);
   border-color: var(--border);
 }
 
-/* Efeito visual da variante contornada. */
 .btn-selection-outline:hover {
   background: var(--light-pink);
   color: var(--dark-pink);
   border-color: var(--rose);
   transform: translateY(-0.2rem);
 }
+
 /* =========================================================
-   RESPONSIVIDADE
+   RESPONSIVIDADE — TABLETS E TELAS MÉDIAS
 ========================================================= */
 
-/* Em telas médias, coloca o resumo abaixo da lista de produtos. */
 @media (max-width: 1100px) {
- .carrinho-container {
-   grid-template-columns: 1fr;
- }
+  .carrinho-container {
+    grid-template-columns: minmax(0, 1fr);
+  }
 
-    .summary {
-      position: static;
-    }
+  .summary {
+    position: static;
+  }
+
+  .cart-item {
+    grid-template-columns: 3rem 9rem minmax(0, 1fr) auto;
+    gap: 1.5rem;
+  }
+
+  .cart-item > img {
+    width: 9rem;
+    height: 9rem;
+  }
+
+  .item-price {
+    grid-column: 3;
+    grid-row: 2;
+    justify-self: start;
+  }
+
+  .quantity-wrap {
+    grid-column: 4;
+    grid-row: 2;
+  }
+
+  .remove-item {
+    grid-column: 4;
+    grid-row: 1;
+    justify-self: end;
+  }
 }
-
-/* Em celulares, reorganiza os elementos do produto para caber na tela. */
-@media (max-width: 600px) {
- .cart-item {
-   display: grid;
-   grid-template-columns: 28px 75px minmax(0, 1fr) 30px;
-   grid-template-rows: auto auto auto;
-   gap: 10px;
-   padding: 14px;
-   align-items: start;
- }
-
-    .cart-select {
-      grid-column: 1;
-      grid-row: 1 / span 2;
-      align-self: center;
-    }
-
-    .cart-item > img {
-      grid-column: 2;
-      grid-row: 1 / span 2;
-      width: 75px;
-      height: 90px;
-      object-fit: contain;
-      border-radius: 10px;
-    }
-
-    .item-info {
-      grid-column: 3;
-      grid-row: 1;
-      min-width: 0;
-    }
-
-    /* Reduz o título do produto para telas estreitas. */
-    .item-info h3 {
-      font-size: 14px;
-      line-height: 1.4;
-      overflow-wrap: anywhere;
-    }
-
-    /* Ajusta a descrição no celular sem alterar os demais elementos do carrinho. */
-    .item-info p {
-      font-size: 12px;
-      line-height: 1.5;
-      margin-top: 0.6rem;
-      overflow-wrap: break-word;
-      word-break: normal;
-      white-space: normal;
-    }
-
-    .remove-item {
-      grid-column: 4;
-      grid-row: 1;
-      justify-self: end;
-    }
-
-    .item-price {
-      grid-column: 3;
-      grid-row: 2;
-      font-size: 13px;
-    }
-
-    .quantity-wrap {
-        grid-column: 2 / span 2;
-        grid-row: 3;
-        justify-self: start;
-        width: fit-content;
-        gap: 0.6rem;
-        padding: 0.3rem;
-        margin-top: 3px;
-      }
-}
-
-
 
 /* =========================================================
-   CORREÇÃO DEFINITIVA DA DESCRIÇÃO DO PRODUTO
-   Mantém a fonte legível em diferentes tamanhos de tela.
+   RESPONSIVIDADE — CELULARES
 ========================================================= */
 
-/* Impede que o conteúdo do carrinho force as colunas
-   a ficarem menores do que o espaço disponível. */
-.cart-item {
-  min-width: 0;
-}
-
-
 @media (max-width: 600px) {
+  .carrinho-hero {
+    padding: 10rem 5% 4rem;
+  }
+
+  .carrinho-hero h1 {
+    font-size: 3.6rem;
+  }
+
+  .carrinho-hero p {
+    font-size: 1.4rem;
+  }
+
+  .carrinho-content {
+    padding: 3rem 4% 5rem;
+  }
+
+  .carrinho-container {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 2rem;
+  }
+
+  .cart-items {
+    padding: 1.5rem;
+  }
+
+  .cart-title {
+    align-items: flex-start;
+    gap: 1rem;
+  }
+
+  .cart-title h2 {
+    font-size: 2rem;
+  }
+
+  .cart-total-items {
+    font-size: 1.2rem;
+  }
+
+  /* Organização do produto no celular */
+  .cart-item {
+    display: grid;
+    grid-template-columns: 2.8rem 7.5rem minmax(0, 1fr) 2.5rem;
+    grid-template-rows: auto auto auto;
+    align-items: start;
+    gap: 1rem;
+    min-width: 0;
+    padding: 1.4rem 0;
+  }
+
+  .cart-select {
+    grid-column: 1;
+    grid-row: 1 / span 2;
+    align-self: center;
+  }
+
+  .cart-item > img {
+    grid-column: 2;
+    grid-row: 1 / span 2;
+    width: 7.5rem;
+    height: 9rem;
+    max-width: 100%;
+    object-fit: contain;
+    border-radius: 1rem;
+  }
+
+  /* Coluna de informações */
   .item-info {
-    width: auto;
+    grid-column: 3;
+    grid-row: 1;
+    width: 100%;
     min-width: 0;
     max-width: 100%;
+    align-self: start;
   }
 
-  .item-info h3 {
-    font-size: 14px;
+  .item-category {
+    font-size: 0.95rem;
     line-height: 1.4;
-    overflow-wrap: break-word;
-    word-break: normal;
+    letter-spacing: 0.08rem;
   }
 
-  .item-info p {
-    width: auto;
-    max-width: 100%;
-    font-size: 13px;
-    line-height: 1.5;
-    overflow-wrap: break-word;
-    word-break: normal;
-    white-space: normal;
-  }
-}
-
-@media (max-width: 600px) {
   .item-info h3 {
-    font-size: 14px;
+    max-width: 100%;
+    font-size: 1.4rem;
+    line-height: 1.4;
+    overflow-wrap: anywhere;
+    word-break: normal;
   }
 
+  /* Correção principal da descrição no celular */
   .item-info p {
-    font-size: 13px;
+    display: block;
+    width: 100%;
+    min-width: 0;
+    max-width: 100%;
+    margin-top: 0.6rem;
+    font-size: 1.3rem;
     line-height: 1.5;
+    white-space: normal;
+    overflow-wrap: anywhere;
+    word-break: normal;
+    box-sizing: border-box;
+  }
+
+  .remove-item {
+    grid-column: 4;
+    grid-row: 1;
+    justify-self: end;
+    width: 2.8rem;
+    height: 2.8rem;
+    font-size: 2rem;
+  }
+
+  .item-price {
+    grid-column: 3;
+    grid-row: 2;
+    justify-self: start;
+    margin-top: 0.5rem;
+    font-size: 1.3rem;
+  }
+
+  .quantity-wrap {
+    grid-column: 2 / span 2;
+    grid-row: 3;
+    justify-self: start;
+    width: fit-content;
+    max-width: 100%;
+    gap: 0.6rem;
+    padding: 0.3rem;
+    margin-top: 0.3rem;
+    box-sizing: border-box;
+  }
+
+  .quantity-btn {
+    width: 2.8rem;
+    height: 2.8rem;
+  }
+
+  .quantity {
+    width: 3.2rem;
+  }
+
+  .summary {
+    padding: 2rem;
+  }
+
+  .summary h3 {
+    font-size: 2rem;
+  }
+
+  .summary-line {
+    font-size: 1.3rem;
+  }
+
+  .summary-total {
+    gap: 1rem;
+    font-size: 1.4rem;
+  }
+
+  .summary-total strong {
+    font-size: 1.8rem;
+  }
+
+  .cart-selection-actions {
+    flex-direction: column;
+  }
+
+  .btn-selection {
+    width: 100%;
   }
 }
 
+/* =========================================================
+   CELULARES MUITO ESTREITOS
+========================================================= */
+
+@media (max-width: 380px) {
+  .cart-items {
+    padding: 1rem;
+  }
+
+  .cart-item {
+    grid-template-columns: 2.4rem 6rem minmax(0, 1fr) 2.2rem;
+    gap: 0.7rem;
+  }
+
+  .cart-item > img {
+    width: 6rem;
+    height: 7.5rem;
+  }
+
+  .item-info h3 {
+    font-size: 1.3rem;
+  }
+
+  .item-info p {
+    font-size: 1.2rem;
+    line-height: 1.5;
+  }
+
+  .remove-item {
+    width: 2.4rem;
+    height: 2.4rem;
+  }
+}
