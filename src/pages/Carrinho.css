@@ -753,13 +753,30 @@
 }
 
 
-/* Centraliza a caixa de valores no celular */
+/* Centraliza o resumo do pedido no celular */
 @media (max-width: 600px) {
-  .summary {
+  .carrinho-content {
     width: 100%;
-    max-width: 100%;
+    padding-left: 4%;
+    padding-right: 4%;
+    box-sizing: border-box;
+  }
+
+  .carrinho-container {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    width: 100%;
     margin-left: auto;
     margin-right: auto;
     box-sizing: border-box;
+  }
+
+  .summary {
+    width: 100%;
+    max-width: 100%;
+    margin: 0 auto;
+    justify-self: stretch;
+    box-sizing: border-box;
+    position: static;
   }
 }
