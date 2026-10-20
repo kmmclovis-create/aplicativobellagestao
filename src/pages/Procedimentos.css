@@ -223,6 +223,19 @@ select {
 }
 
 
+/* Remove o X padrão do navegador */
+.procedimentos-page .input[type="search"]::-webkit-search-cancel-button {
+  -webkit-appearance: none;
+  appearance: none;
+  display: none;
+}
+
+.procedimentos-page .input[type="search"]::-webkit-search-decoration {
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+
 .clear-btn {
   position: absolute;
 
